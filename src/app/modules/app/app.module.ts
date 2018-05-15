@@ -9,12 +9,14 @@ import { RoutingModule } from '../routing/routing.module';
 import { HomeComponent } from '../home/home.component';
 import { SharedModule } from '../../shared/shared.module';
 import { SidebarComponent } from '../../shared/components/sidebar/sidebar.component';
+import { LaunchComponent } from '../launch/launch.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     SidebarComponent
+    LaunchComponent
   ],
   imports: [
     BrowserModule,

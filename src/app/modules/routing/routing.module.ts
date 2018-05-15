@@ -3,13 +3,14 @@ import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 import { AppComponent } from '../app/app.component';
 import { HomeComponent } from '../home/home.component';
+import { LaunchComponent } from '../launch/launch.component';
 
 /**
  * @TODO enable LaunchComponent when ready
  */
 const routes: Routes = [
   { path: '', component: HomeComponent },
-// { path: '', component: LaunchComponent }
+  { path: 'launches', component: LaunchComponent },
 ];
 
 @NgModule({
