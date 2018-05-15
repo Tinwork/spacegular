@@ -5,6 +5,9 @@ import { AppComponent } from '../app/app.component';
 import { HomeComponent } from '../home/home.component';
 import { LaunchComponent } from '../launch/launch.component';
 
+/**
+ * @TODO enable LaunchComponent when ready
+ */
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'launches', component: LaunchComponent },
