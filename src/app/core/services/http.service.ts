@@ -15,7 +15,7 @@ let httpInstance: HttpService;
 })
 export class HttpService {
 
-  private baseURL = 'https://api.spacexdata.com/v2/launches';
+  private baseURL = 'https://api.spacexdata.com/v2/';
 
   constructor(
     private http: HttpClient
