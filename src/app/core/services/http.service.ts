@@ -1,6 +1,12 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable } from "rxjs";
+import { catchError } from 'rxjs/operators';
+
+// import known models
+import { CompanyInfo } from 'src/app/shared/models/CompanyInfo';
+import { LaunchesInfo } from 'src/app/shared/models/LaunchesInfo';
+import { RocketsInfo } from 'src/app/shared/models/RocketsInfo';
 
 let httpInstance: HttpService;
 
@@ -16,6 +22,48 @@ export class HttpService {
   ) {}
 
   /**
+   * Get Company Info
+   * 
+   * @return Observable
+   */
+  getCompanyInfo() : Observable<CompanyInfo> {
+    const requestEndpoint = `${this.baseURL}/info`;
+    return this.http
+      .get<CompanyInfo>(requestEndpoint)
+      .pipe(
+        catchError(err => this.handleError(err))
+      );
+  }
+
+  /**
+   * Get Launches Info
+   * 
+   * @return Observable
+   */
+  getLaunchesInfo() : Observable<LaunchesInfo> {
+    const requestEndpoint = `${this.baseURL}/launches`;
+    return this.http
+    .get<LaunchesInfo>(requestEndpoint)
+    .pipe(
+      catchError(err => this.handleError(err))
+    );
+  }
+
+  /**
+   * Get Rocket Info
+   * 
+   * @return Observable
+   */
+  getRocketsInfo() : Observable<RocketsInfo> {
+    const requestEndpoint = `${this.baseURL}/rockets`;
+    return this.http
+      .get<RocketsInfo>(requestEndpoint)
+      .pipe(
+        catchError(err => this.handleError(err))
+      );
+  }
+
+  /**
    * Fetch
    *    Fetch a reqeust
    * @param {String} endpoint
@@ -25,7 +73,10 @@ export class HttpService {
     const uri = `${this.baseURL}${endpoint}`;
 
     return this.http
-      .get<T>(uri);
+      .get<T>(uri)
+      .pipe(
+        catchError(err => this.handleError(err))
+      );
   }
 
   /**
