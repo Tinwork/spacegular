@@ -29,7 +29,7 @@ export class AppComponent implements OnInit {
    * @void
    */
   getCompanies() {
-    this.http.fetch<CompanyInfo>('/info')
+    this.http.fetch<CompanyInfo>('info')
     .subscribe(
       (company: CompanyInfo) => {
         this.companies.push(company)
