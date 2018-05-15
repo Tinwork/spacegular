@@ -15,7 +15,7 @@ let httpInstance: HttpService;
 })
 export class HttpService {
 
-  private baseURL = 'https://api.spacexdata.com/v2/launches';
+  private baseURL = 'https://api.spacexdata.com/v2';
 
   constructor(
     private http: HttpClient
@@ -94,6 +94,7 @@ export class HttpService {
       errorMsg = `Server error, code: ${err.status}, message: ${err.message}`;
     }
 
+    console.log(errorMsg);
     return Observable.throw(errorMsg);
   }
 }

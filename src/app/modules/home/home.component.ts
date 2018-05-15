@@ -14,7 +14,7 @@ export class HomeComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.http.fetch<LaunchesInfo>('/latest').subscribe(
+    this.http.fetch<LaunchesInfo>('/launches/latest').subscribe(
       (data: LaunchesInfo) => console.log(data)
     );
   }

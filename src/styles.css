@@ -4,6 +4,16 @@ body {
   background-color: 'black';
 }
 
-p, h1, h2, h3, h4 {
+p, h1, h2, h3, h4, div {
   font-family: 'roboto', 'sans-serif';
+}
+
+app-sidebar {
+  width: 200px;
+  background-color: #6644B1;
+  height: calc(100vh - 64px);
+  position: absolute;
+  top: 64px;
+  left: 0;
+  color: white;
 }
