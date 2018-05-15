@@ -1,4 +1,4 @@
-export interface Option {
+export interface LaunchOption {
     flight_number?: number;
     launch_year?: string;
     launch_date_utc?: string;

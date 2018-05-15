@@ -1,11 +1,17 @@
 import { Injectable } from '@angular/core';
+import { HttpParams } from '@angular/common/http';
+
+import { Observable, Subject, pipe } from 'rxjs';
+import { map, takeUntil, tap } from 'rxjs/operators';
 
 import { HttpService } from '../core/services/http.service';
-import { Observable } from 'rxjs';
 
+import { CompanyData } from '../models/company_data';
+import { Rocket } from '../models/rocket';
+import { Capsule } from '../models/capsule';
 import { Launch } from '../models/launch';
-import { Option } from '../models/option';
-import { HttpParams } from '@angular/common/http';
+import { LaunchPad } from '../models/launchpad';
+
 
 @Injectable({
   providedIn: 'root'
@@ -19,11 +25,96 @@ export class SpaceXAPIService {
   ) { }
 
   /**
+   * Endpoint : Request on [Company Data]
    * 
    * @param {Object} filters 
    */
-  public getLaunches(filters){
-    let options: Option;
+  public getCompanyData(filters): Observable<CompanyData[]> {
+    return this.restClient
+      .fetch<Launch[]>(this.buildRequestURL('companies', filters))
+      .pipe(
+        tap(console.log),
+        map(data => data)
+      )
+  }
+
+  /**
+   * Endpoint : Request on [Rockets]
+   * 
+   * @param {Object} filters 
+   */
+  public getRockets(filters): Observable<Rocket[]> {
+    return this.restClient
+      .fetch<Launch[]>(this.buildRequestURL('rockets', filters))
+      .pipe(
+        tap(console.log),
+        map(data => data)
+      )
+  }
+
+  /**
+   * Endpoint : Request on [Capsules]
+   * 
+   * @param {Object} filters 
+   */
+  public getCapsules(filters): Observable<Capsule[]> {
+    return this.restClient
+      .fetch<Launch[]>(this.buildRequestURL('capsules', filters))
+      .pipe(
+        tap(console.log),
+        map(data => data)
+      )
+  }
+
+  /**
+   * Endpoint : Request on [Launchpad]
+   * 
+   * @param {Object} filters 
+   */
+  public getLaunchpad(filters): Observable<LaunchPad[]> {
+    return this.restClient
+      .fetch<Launch[]>(this.buildRequestURL('launchpads', filters))
+      .pipe(
+        tap(console.log),
+        map(data => data)
+      )
+  }
+
+  /**
+   * Endpoint : Request on [Launches]
+   * 
+   * @param {Object} filters 
+   */
+  public getLaunches(filters) : Observable<Launch[]> {
+    let url = this.buildRequestURL('launches', filters);
+
+    return this.restClient
+      .fetch<Launch[]>(url)
+      .pipe(
+        tap(console.log),
+        map(data => data)
+      )
+  }
+
+  /**
+   * Endpoint : Request on [Detailed Capsule Data]
+   * 
+   * @param {Object} filters 
+   */
+  public getDetailedCapsuleData(filters){
+    let url = this.buildRequestURL('launches', filters);
+    
+    return this.restClient.fetch(url).subscribe(
+      (data: Launch[]) => this.launches = data
+    );
+  }
+  
+  /**
+   * Endpoint : Request on [Detailed Core Data]
+   * 
+   * @param {Object} filters 
+   */
+  public getDetailedCoreData(filters){
     let url = this.buildRequestURL('launches', filters);
     
     return this.restClient.fetch(url).subscribe(
