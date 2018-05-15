@@ -4,8 +4,12 @@ import { Routes, RouterModule } from '@angular/router';
 import { AppComponent } from '../app/app.component';
 import { HomeComponent } from '../home/home.component';
 
+/**
+ * @TODO enable LaunchComponent when ready
+ */
 const routes: Routes = [
-  { path: '', component: HomeComponent }
+  { path: '', component: HomeComponent },
+// { path: '', component: LaunchComponent }
 ];
 
 @NgModule({

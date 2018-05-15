@@ -67,7 +67,7 @@ export class HttpService {
    * Fetch
    *    Fetch a reqeust
    * @param {String} endpoint
-   * @return {Observable<T> }Observable
+   * @return {Observable<T>} Observable
    */
   fetch<T>(endpoint: String): Observable<T> {
     const uri = `${this.baseURL}${endpoint}`;
@@ -85,7 +85,7 @@ export class HttpService {
    * @param {HttpErrorResponse} err
    * @return {Observable<T>} 
    */
-  handleError<T>(err: HttpErrorResponse): Observable<T> {
+  private handleError<T>(err: HttpErrorResponse): Observable<T> {
     let errorMsg = '';
 
     if (err.error instanceof Error) {

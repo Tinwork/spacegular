@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from '../../core/services/http.service';
+import { LaunchesInfo } from 'src/app/shared/models/LaunchesInfo';
 
 @Component({
   selector: 'app-home',
@@ -13,8 +14,8 @@ export class HomeComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.http.fetch<any>('/latest').subscribe(
-      (data: any) => console.log(data)
+    this.http.fetch<LaunchesInfo>('/latest').subscribe(
+      (data: LaunchesInfo) => console.log(data)
     );
   }
 }
