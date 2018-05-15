@@ -15,7 +15,7 @@ import { LaunchComponent } from '../launch/launch.component';
   declarations: [
     AppComponent,
     HomeComponent,
-    SidebarComponent
+    SidebarComponent,
     LaunchComponent
   ],
   imports: [
