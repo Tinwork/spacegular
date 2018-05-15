@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { SpacexApiService } from './Providers/Backend/spacex-api.service';
 
 @Component({
   selector: 'app-root',
@@ -9,13 +8,9 @@ import { SpacexApiService } from './Providers/Backend/spacex-api.service';
 export class AppComponent implements OnInit {
   title = 'app';
 
-  constructor(
-    private spacexApi: SpacexApiService
-  ) { }
+  constructor() { }
 
   ngOnInit(): void {
-    this.spacexApi.getCompanyInfo().subscribe(data => {
-      console.log(JSON.stringify(data))
-    })
+    
   }
 }
