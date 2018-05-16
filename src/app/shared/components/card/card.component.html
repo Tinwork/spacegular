@@ -1,0 +1,10 @@
+<mat-card class="tinwork-card">
+  <mat-card-title>{{title}}</mat-card-title>
+  <mat-card-content>
+    <mat-list>
+      <mat-list-item *ngFor="let d of datas | keys">
+        {{d}} : {{datas[d] | tostring}}
+      </mat-list-item>
+    </mat-list>
+  </mat-card-content>
+</mat-card>

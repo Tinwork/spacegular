@@ -1,10 +1,8 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <mat-toolbar color="primary">
   <span>Spacegular</span>
-  <button mat-button (click)="sidebarOnClick()">Sidebar</button>
+  <button mat-button (click)="sidebarOnClick()"><mat-icon>menu</mat-icon></button>
   <button mat-button><a routerLink="/" routerLinkActive="active">Home</a></button>
   <button mat-button><a routerLink="/launches" routerLinkActive="active">Launches</a></button>
 </mat-toolbar>
-<app-sidebar *ngIf="deploy" [companies]="companies"></app-sidebar>
-<router-outlet></router-outlet>
-
+<app-sidebar [open]="deploy" [items]="sidebarData"></app-sidebar>
