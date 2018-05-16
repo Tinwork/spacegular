@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from '../../core/services/http.service';
-import { CompanyInfo } from '../../shared/models/CompanyInfo';
 import { map } from 'rxjs/operators';
 
 @Component({
@@ -11,30 +10,29 @@ import { map } from 'rxjs/operators';
 export class AppComponent implements OnInit {
   title = 'app';
   deploy = false;
-
-  companies: CompanyInfo[] = [];
+  sidebarData: Array<String> = [];
 
   constructor(
     private http: HttpService
   ) { }
 
   ngOnInit(): void {
-    this.getCompanies();
+    this.setSidebarData();
   }
 
   /**
-   * Get Companies
+   * Set Sidebar Data
    * 
-   * @public
    * @void
    */
-  getCompanies() {
-    this.http.fetch<CompanyInfo>('info')
-    .subscribe(
-      (company: CompanyInfo) => {
-        this.companies.push(company)
-      }
-    )
+  setSidebarData() {
+    this.sidebarData = [
+      'company',
+      'rocket',
+      'launches',
+      'capsule',
+      'core'
+    ];
   }
 
   /**
