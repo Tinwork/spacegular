@@ -7,8 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
-import { MatGridListModule } from '@angular/material/grid-list';
-
+import { MatTabsModule } from '@angular/material/tabs';
 
 @NgModule({
   imports: [
@@ -20,7 +19,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
     MatListModule,
     MatIconModule,
     MatCardModule,
-    MatGridListModule
+    MatTabsModule
   ],
   declarations: [],
   exports: [
@@ -31,7 +30,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
     MatListModule,
     MatIconModule,
     MatCardModule,
-    MatGridListModule
+    MatTabsModule
   ]
 })
 export class SharedModule { }
