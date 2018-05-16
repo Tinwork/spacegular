@@ -1,3 +1,22 @@
-<p>
-  capsule works!
-</p>
+<mat-grid-list cols="6" rowHeight="300px">
+  <mat-grid-tile colspan="3" rowspan="1" *ngFor="let capsule of capsules">
+    <mat-card class="example-card">
+      <mat-card-header>
+        <div mat-card-avatar class="example-header-image"></div>
+        <mat-card-title>Name: {{capsule.name}}</mat-card-title>
+        <mat-card-subtitle>Status: {{capsule.active}}</mat-card-subtitle>
+      </mat-card-header>
+      <img mat-card-image [src]="getCapsuleImg(capsule.id)" alt="Photo of a capsule">
+      <mat-card-content>
+        <mat-list>
+         <mat-list-item> Crew capacity: {{capsule.crew_capacity}} </mat-list-item>
+         <mat-list-item> Orbit duration: {{capsule.orbit_duration}} </mat-list-item>
+        </mat-list>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-button>LIKE</button>
+        <button mat-button>SHARE</button>
+      </mat-card-actions>
+    </mat-card>
+  </mat-grid-tile>
+</mat-grid-list>

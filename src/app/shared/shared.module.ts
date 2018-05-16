@@ -6,6 +6,8 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
+import { MatCardModule } from '@angular/material/card';
+import { MatGridListModule } from '@angular/material/grid-list';
 
 
 @NgModule({
@@ -16,7 +18,9 @@ import { MatIconModule } from '@angular/material/icon';
     MatSidenavModule,
     BrowserAnimationsModule,
     MatListModule,
-    MatIconModule
+    MatIconModule,
+    MatCardModule,
+    MatGridListModule
   ],
   declarations: [],
   exports: [
@@ -25,7 +29,9 @@ import { MatIconModule } from '@angular/material/icon';
     MatSidenavModule,
     BrowserAnimationsModule,
     MatListModule,
-    MatIconModule
+    MatIconModule,
+    MatCardModule,
+    MatGridListModule
   ]
 })
 export class SharedModule { }
