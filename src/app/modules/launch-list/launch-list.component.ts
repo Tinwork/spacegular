@@ -22,12 +22,11 @@ export class LaunchListComponent implements OnInit {
 
   initLaunches() {
     this.spaceXAPI.getLaunches({
-      'query_type': 'upcoming',
+      'query_type': 'all',
+      'with_filter': true,
       'queries': {
-        'flight_number': 51,
-        'id': 1123456789,
-        'param2': 'yo'
-      }
+        'flight_number': [1, 2, 3]
+      } 
     }).subscribe(
       (data: Launch[]) => this.launches = data
     );

@@ -84,9 +84,9 @@ export class SpaceXAPIService {
   /**
    * Endpoint : Request on [Launches]
    * 
-   * @param {Object} filters 
+   * @param {Object|null} filters 
    */
-  public getLaunches(filters) : Observable<Launch[]> {
+  public getLaunches(filters?: Object) : Observable<Launch[]> {
     let url = this.buildRequestURL('launches', filters);
 
     return this.restClient
@@ -132,18 +132,29 @@ export class SpaceXAPIService {
    * @param params 
    */
   private buildRequestURL(entity: String, params) {
-    if (!params || typeof params.query_type === 'undefined' || params.query_type === 'latest') {
-      return entity + '/latest';
+    let requestUrl = entity;
+    
+    if (!params || typeof params.query_type === 'undefined') {
+      return requestUrl;
+    }
+
+    if (params.query_type === 'all') {
+      requestUrl = requestUrl + '/all';
+    }
+
+    if (params.query_type === 'latest') {
+      requestUrl = requestUrl + '/latest';
     }
 
     if (params.query_type === 'upcoming') {
-      return entity + '/upcoming';
+      requestUrl = requestUrl + '/upcoming';
     }
 
-    if (params.query_type === 'with_filter') {
-      
-      return entity + '?' + this.buildHttpParams(params.queries).toString();
+    if (params.with_filter === true) {
+      requestUrl = requestUrl + '?' + this.buildHttpParams(params.queries).toString();
     }
+
+    return requestUrl;
   }
 
   /**
