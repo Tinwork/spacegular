@@ -1,8 +1,6 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <mat-toolbar color="primary">
-  <span>Spacegular</span>
   <button mat-button (click)="sidebarOnClick()"><mat-icon>menu</mat-icon></button>
-  <button mat-button><a routerLink="/" routerLinkActive="active">Home</a></button>
-  <button mat-button><a routerLink="/launches" routerLinkActive="active">Launches</a></button>
+  <span>Spacegular</span>
 </mat-toolbar>
 <app-sidebar [open]="deploy" [items]="sidebarData"></app-sidebar>
