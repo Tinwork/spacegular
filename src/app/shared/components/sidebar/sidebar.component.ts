@@ -3,13 +3,16 @@ import { Component, OnInit, Input } from '@angular/core';
 @Component({
   selector: 'app-sidebar',
   template: `
-    <mat-sidenav-container class="mat-container">
-      <mat-sidenav-content>
+    <mat-drawer-container class="example-container" autosize>
+      <mat-drawer #drawer class="example-sidenav" mode="side" [opened]="open">
         <mat-list>
-          <mat-list-item *ngFor="let company of companies">{{company.name}}</mat-list-item>
+          <mat-list-item *ngFor="let item of items">{{item}}</mat-list-item>
         </mat-list>
-      </mat-sidenav-content>
-    </mat-sidenav-container>
+      </mat-drawer>
+
+      <div class="example-sidenav-content">
+      </div>
+    </mat-drawer-container>
   `,
   styles: [
 
@@ -18,15 +21,13 @@ import { Component, OnInit, Input } from '@angular/core';
 export class SidebarComponent implements OnInit {
 
   @Input()
-  public companies: Array<any>;
+  public items: Array<any>;
 
-  constructor() { }
+  @Input()
+  public open: Boolean;
+
+  constructor() {}
 
   ngOnInit() {
-    console.log(this.companies);
-  }
-
-  handleClick() {
-    console.log('click');
   }
 }
