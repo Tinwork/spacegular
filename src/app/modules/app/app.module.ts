@@ -11,6 +11,7 @@ import { SharedModule } from '../../shared/shared.module';
 import { SidebarComponent } from '../../shared/components/sidebar/sidebar.component';
 import { LaunchComponent } from '../launch/launch.component';
 import { CapsuleComponent } from '../capsule/capsule.component';
+import { CardComponent } from '../../shared/components/card/card.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { CapsuleComponent } from '../capsule/capsule.component';
     HomeComponent,
     SidebarComponent,
     LaunchComponent,
-    CapsuleComponent
+    CapsuleComponent,
+    CardComponent
   ],
   imports: [
     BrowserModule,
@@ -27,7 +29,8 @@ import { CapsuleComponent } from '../capsule/capsule.component';
     SharedModule,
   ],
   entryComponents: [
-    SidebarComponent
+    SidebarComponent,
+    CardComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

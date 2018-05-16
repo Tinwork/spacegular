@@ -9,28 +9,38 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { MatTabsModule } from '@angular/material/tabs';
 
+// Pipe
+import { KeysPipe } from './pipes/keys/keys.pipe';
+import { TostringPipe } from './pipes/tostring/tostring.pipe';
+
+
 @NgModule({
   imports: [
+    BrowserAnimationsModule,
     CommonModule,
     MatToolbarModule,
     MatButtonModule,
     MatSidenavModule,
-    BrowserAnimationsModule,
     MatListModule,
     MatIconModule,
     MatCardModule,
-    MatTabsModule
+    MatTabsModule,
   ],
-  declarations: [],
+  declarations: [
+    KeysPipe,
+    TostringPipe
+  ],
   exports: [
+    BrowserAnimationsModule,
+    KeysPipe,
     MatToolbarModule,
     MatButtonModule,
     MatSidenavModule,
-    BrowserAnimationsModule,
     MatListModule,
     MatIconModule,
     MatCardModule,
-    MatTabsModule
+    MatTabsModule,
+    TostringPipe
   ]
 })
 export class SharedModule { }
