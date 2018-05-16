@@ -10,6 +10,8 @@ import { HomeComponent } from '../home/home.component';
 import { SharedModule } from '../../shared/shared.module';
 import { SidebarComponent } from '../../shared/components/sidebar/sidebar.component';
 import { LaunchComponent } from '../launch/launch.component';
+import { CapsuleComponent } from '../capsule/capsule.component';
+import { CardComponent } from '../../shared/components/card/card.component';
 import { LaunchListComponent } from '../launch-list/launch-list.component';
 
 @NgModule({
@@ -18,6 +20,8 @@ import { LaunchListComponent } from '../launch-list/launch-list.component';
     HomeComponent,
     SidebarComponent,
     LaunchComponent,
+    CapsuleComponent,
+    CardComponent,
     LaunchListComponent
   ],
   imports: [
@@ -27,7 +31,8 @@ import { LaunchListComponent } from '../launch-list/launch-list.component';
     SharedModule,
   ],
   entryComponents: [
-    SidebarComponent
+    SidebarComponent,
+    CardComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

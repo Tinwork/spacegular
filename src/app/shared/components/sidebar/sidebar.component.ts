@@ -11,6 +11,7 @@ import { Component, OnInit, Input } from '@angular/core';
       </mat-drawer>
 
       <div class="example-sidenav-content">
+        <router-outlet></router-outlet>
       </div>
     </mat-drawer-container>
   `,

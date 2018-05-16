@@ -1,0 +1,48 @@
+.example-card {
+  max-width: 200px;
+}
+
+.mat-grid-list {
+  height: 100vh;
+}
+
+.mat-grid-tile {
+  top: 64px;
+}
+
+.mat-card {
+  top: 100px;
+  position: inherit;
+  height: 100%;
+  flex: 1;
+}
+
+.mat-card-image {
+  max-height: 170px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.tinwork-grid {
+  display: flex;
+  margin-top: 15px;
+  align-items: flex-start;
+  padding: 15px;
+}
+
+mat-tab-group {
+  flex-grow: 1;
+  margin-left: 20px;
+}
+
+.mat-card-avatar {
+  background-image: url('https://i.pinimg.com/originals/9a/21/4b/9a214b68fc4146d02a5b41882e79987c.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  box-shadow: 0px 0px 5px rgba(0,0,0,0.5);
+}
+
+app-card {
+  
+}
+
