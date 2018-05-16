@@ -12,6 +12,7 @@ import { SidebarComponent } from '../../shared/components/sidebar/sidebar.compon
 import { LaunchComponent } from '../launch/launch.component';
 import { CapsuleComponent } from '../capsule/capsule.component';
 import { CardComponent } from '../../shared/components/card/card.component';
+import { LaunchListComponent } from '../launch-list/launch-list.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { CardComponent } from '../../shared/components/card/card.component';
     SidebarComponent,
     LaunchComponent,
     CapsuleComponent,
-    CardComponent
+    CardComponent,
+    LaunchListComponent
   ],
   imports: [
     BrowserModule,

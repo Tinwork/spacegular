@@ -5,6 +5,7 @@ import { AppComponent } from '../app/app.component';
 import { HomeComponent } from '../home/home.component';
 import { LaunchComponent } from '../launch/launch.component';
 import { CapsuleComponent } from '../capsule/capsule.component';
+import { LaunchListComponent } from '../launch-list/launch-list.component';
 
 /**
  * @TODO enable LaunchComponent when ready
@@ -12,7 +13,8 @@ import { CapsuleComponent } from '../capsule/capsule.component';
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'launches', component: LaunchComponent },
-  { path: 'capsules', component: CapsuleComponent}
+  { path: 'capsules', component: CapsuleComponent},
+  { path: 'launches', component: LaunchListComponent },
 ];
 
 @NgModule({

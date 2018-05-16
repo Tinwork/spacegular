@@ -6,12 +6,13 @@ import { map, takeUntil, tap } from 'rxjs/operators';
 
 import { HttpService } from '../core/services/http.service';
 
-import { CompanyData } from '../models/company_data';
+import { Company } from '../models/company';
 import { Rocket } from '../models/rocket';
 import { Capsule } from '../models/capsule';
 import { Launch } from '../models/launch';
 import { LaunchPad } from '../models/launchpad';
-
+import { CoreDetail } from '../models/core_detail';
+import { CapsuleDetail } from '../models/capsule_detail';
 
 @Injectable({
   providedIn: 'root'
@@ -25,13 +26,13 @@ export class SpaceXAPIService {
   ) { }
 
   /**
-   * Endpoint : Request on [Company Data]
+   * Endpoint : Request on [Company]
    * 
    * @param {Object} filters 
    */
-  public getCompanyData(filters): Observable<CompanyData[]> {
+  public getCompany(filters): Observable<Company> {
     return this.restClient
-      .fetch<Launch[]>(this.buildRequestURL('companies', filters))
+      .fetch<Launch[]>(this.buildRequestURL('info', filters))
       .pipe(
         tap(console.log),
         map(data => data)
@@ -83,9 +84,9 @@ export class SpaceXAPIService {
   /**
    * Endpoint : Request on [Launches]
    * 
-   * @param {Object} filters 
+   * @param {Object|null} filters 
    */
-  public getLaunches(filters) : Observable<Launch[]> {
+  public getLaunches(filters?: Object) : Observable<Launch[]> {
     let url = this.buildRequestURL('launches', filters);
 
     return this.restClient
@@ -101,12 +102,13 @@ export class SpaceXAPIService {
    * 
    * @param {Object} filters 
    */
-  public getDetailedCapsuleData(filters){
-    let url = this.buildRequestURL('launches', filters);
-    
-    return this.restClient.fetch(url).subscribe(
-      (data: Launch[]) => this.launches = data
-    );
+  public getDetailedCapsuleData(filters): Observable<CapsuleDetail[]>{
+    return this.restClient
+      .fetch<Launch[]>(this.buildRequestURL('parts/caps', filters))
+      .pipe(
+        tap(console.log),
+        map(data => data)
+      )
   }
   
   /**
@@ -114,12 +116,13 @@ export class SpaceXAPIService {
    * 
    * @param {Object} filters 
    */
-  public getDetailedCoreData(filters){
-    let url = this.buildRequestURL('launches', filters);
-    
-    return this.restClient.fetch(url).subscribe(
-      (data: Launch[]) => this.launches = data
-    );
+  public getDetailedCoreData(filters): Observable<CoreDetail[]>{
+    return this.restClient
+      .fetch<Launch[]>(this.buildRequestURL('parts/cores', filters))
+      .pipe(
+        tap(console.log),
+        map(data => data)
+      )
   }
 
   /**
@@ -129,18 +132,29 @@ export class SpaceXAPIService {
    * @param params 
    */
   private buildRequestURL(entity: String, params) {
-    if (!params || typeof params.query_type === 'undefined' || params.query_type === 'latest') {
-      return entity + '/latest';
+    let requestUrl = entity;
+    
+    if (!params || typeof params.query_type === 'undefined') {
+      return requestUrl;
+    }
+
+    if (params.query_type === 'all') {
+      requestUrl = requestUrl + '/all';
+    }
+
+    if (params.query_type === 'latest') {
+      requestUrl = requestUrl + '/latest';
     }
 
     if (params.query_type === 'upcoming') {
-      return entity + '/upcoming';
+      requestUrl = requestUrl + '/upcoming';
     }
 
-    if (params.query_type === 'with_filter') {
-      
-      return entity + '?' + this.buildHttpParams(params.queries).toString();
+    if (params.with_filter === true) {
+      requestUrl = requestUrl + '?' + this.buildHttpParams(params.queries).toString();
     }
+
+    return requestUrl;
   }
 
   /**
