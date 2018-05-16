@@ -11,6 +11,7 @@ import { SpaceXAPIService } from '../../providers/space-xapi.service';
 })
 
 export class LaunchComponent implements OnInit {
+  url = 'test';
   launches: Launch[]; 
   options: LaunchOption
 
@@ -24,7 +25,7 @@ export class LaunchComponent implements OnInit {
 
   initLaunches() {
     this.spaceXAPI.getLaunches({
-      'query_type': 'with_filter',
+      'query_type': 'upcoming',
       'queries': {
         'flight_number': 51,
         'id': 1123456789,
