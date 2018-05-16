@@ -23,7 +23,7 @@ export class LaunchListComponent implements OnInit {
   initLaunches() {
     this.spaceXAPI.getLaunches({
       'query_type': 'all',
-      'with_filter': true,
+      'with_filter': false,
       'queries': {
         'flight_number': [1, 2, 3]
       } 
