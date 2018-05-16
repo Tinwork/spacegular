@@ -6,7 +6,9 @@ import { Component, OnInit, Input } from '@angular/core';
     <mat-drawer-container class="example-container" autosize>
       <mat-drawer #drawer class="example-sidenav" mode="side" [opened]="open">
         <mat-list>
-          <mat-list-item *ngFor="let item of items">{{item}}</mat-list-item>
+          <mat-list-item *ngFor="let item of items">
+            <a routerLink="/{{item}}" routerLinkActive="active">{{item}}</a>
+          </mat-list-item>
         </mat-list>
       </mat-drawer>
 

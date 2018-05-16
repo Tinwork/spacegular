@@ -27,11 +27,9 @@ export class AppComponent implements OnInit {
    */
   setSidebarData() {
     this.sidebarData = [
-      'company',
-      'rocket',
-      'launches',
-      'capsule',
-      'core'
+      'home',
+      'capsules',
+      'launches'
     ];
   }
 

@@ -12,7 +12,7 @@ import { LaunchListComponent } from '../launch-list/launch-list.component';
  */
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'launches', component: LaunchComponent },
+  { path: 'home', component: HomeComponent},
   { path: 'capsules', component: CapsuleComponent},
   { path: 'launches', component: LaunchListComponent },
 ];
