@@ -8,14 +8,15 @@ p, h1, h2, h3, h4, div {
   font-family: 'roboto', 'sans-serif';
 }
 
-app-sidebar {
-  width: 200px;
-  background-color: #6644B1;
+.example-container {
   height: calc(100vh - 64px);
-  position: absolute;
-  top: 64px;
-  left: 0;
+}
+
+.example-sidenav {
+  height: calc(100vh - 64px);
+  background-color: #673ab7;
   color: white;
+  width: 200px;
 }
 
 a {
