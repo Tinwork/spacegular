@@ -1,0 +1,15 @@
+<div *ngFor="let input of inputs">
+  <div *ngIf="input.type === 'text'">
+      <label for="ipt-{{input.key}}">{{input.key}}</label>
+      <span>text</span>
+  </div>
+  <div *ngIf="input.type === 'select'">
+    <label for="ipt-{{input.key}}">{{input.key}}</label>
+    <span>select</span>
+  </div>
+  <mat-form-field *ngIf="input.type === 'date'" appearance="legacy">
+    <input matInput [matDatepicker]="picker" placeholder="Choose a date">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+</div>

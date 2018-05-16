@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Launch } from '../../models/launch';
 import { SpaceXAPIService } from '../../providers/space-xapi.service';
+import { Launch } from '../../models/launch';
+import { LaunchOption } from '../../models/launch_option';
+import { LaunchOptionFactory } from '../../factories/launch_option_factory';
 
 @Component({
   selector: 'app-launch-list',
@@ -11,13 +13,16 @@ import { SpaceXAPIService } from '../../providers/space-xapi.service';
 
 export class LaunchListComponent implements OnInit {
   launches: Launch[]; 
+  options: LaunchOption[];
 
   constructor(
-    private spaceXAPI: SpaceXAPIService
+    private spaceXAPI: SpaceXAPIService,
+    private factory: LaunchOptionFactory
   ) { }
 
   ngOnInit() {
     this.initLaunches();
+    this.initOptions();
   }
 
   initLaunches() {
@@ -30,5 +35,10 @@ export class LaunchListComponent implements OnInit {
     }).subscribe(
       (data: Launch[]) => this.launches = data
     );
+  }
+
+  initOptions() {
+      let factory = this.factory.invoke();
+      this.options = factory;
   }
 }

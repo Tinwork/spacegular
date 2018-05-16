@@ -4,3 +4,10 @@
     <app-launch [launch]="launch"></app-launch>
   </mat-list-item>
 </section>
+
+<section>
+  <h2>Filtres</h2>
+  <div *ngFor="let option of options" class="example-container">
+      <app-input-builder [option]="option"></app-input-builder>
+  </div>
+</section>
