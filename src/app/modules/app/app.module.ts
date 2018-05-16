@@ -10,13 +10,15 @@ import { HomeComponent } from '../home/home.component';
 import { SharedModule } from '../../shared/shared.module';
 import { SidebarComponent } from '../../shared/components/sidebar/sidebar.component';
 import { LaunchComponent } from '../launch/launch.component';
+import { CapsuleComponent } from '../capsule/capsule.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     SidebarComponent,
-    LaunchComponent
+    LaunchComponent,
+    CapsuleComponent
   ],
   imports: [
     BrowserModule,

@@ -4,6 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { AppComponent } from '../app/app.component';
 import { HomeComponent } from '../home/home.component';
 import { LaunchComponent } from '../launch/launch.component';
+import { CapsuleComponent } from '../capsule/capsule.component';
 
 /**
  * @TODO enable LaunchComponent when ready
@@ -11,6 +12,7 @@ import { LaunchComponent } from '../launch/launch.component';
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'launches', component: LaunchComponent },
+  { path: 'capsules', component: CapsuleComponent}
 ];
 
 @NgModule({
