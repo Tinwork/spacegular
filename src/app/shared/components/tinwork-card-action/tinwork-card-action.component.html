@@ -1,0 +1,6 @@
+<mat-card-actions>
+  <button mat-button *ngFor="let action of actions" (click)="handleClick(action)">
+   {{action.label}}
+    <!-- <a routerLink="/{{action.url}}" routerLinkActive="active">{{action.label}}</a> -->
+  </button>
+</mat-card-actions>

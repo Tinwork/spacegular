@@ -40,15 +40,18 @@ function capsuleFactory (data: Array<CapsuleInfo>) : Array<TinworkCard> {
  * Rocket Factory
  * 
  * @param {Array<RocketsInfo>} data
+ * @param {Array<any>} actions
  * @return {Array<TinworkCard>}
  */
-function rocketFactory (data: Array<RocketsInfo>) : Array<TinworkCard> {
-  return data.map(data => {
+function rocketFactory (data: Array<RocketsInfo>, actions: Array<any>) : Array<TinworkCard> {
+  return data.map((data, idx) => {
     return {
       title: data.name,
       subtitle: `Status: ${data.active ? 'active' : 'no'}`,
       image: data.image,
-      content: data.description
+      content: data.description,
+      actions: actions[idx] === undefined ? null : [actions[idx]],
+      type: actions[idx] === undefined ? null : actions[idx].type,
     };
   });
 }
@@ -57,14 +60,14 @@ function rocketFactory (data: Array<RocketsInfo>) : Array<TinworkCard> {
   providedIn: 'root'
 })
 export class FactoryCard {
-  normalize(type: String, data: Array<any>) : Array<TinworkCard> {
+  normalize(type: String, data: Array<any>, actions: Array<any> = []) : Array<TinworkCard> {
     switch (type) {
       case 'launch':
         return launchFactory(data)
       case 'capsule':
         return capsuleFactory(data)
       case 'rocket':
-        return rocketFactory(data)
+        return rocketFactory(data, actions)
       default:
         throw new Error('No correct type defined')
     }

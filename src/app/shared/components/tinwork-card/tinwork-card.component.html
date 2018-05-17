@@ -1,6 +1,6 @@
 <mat-card class="launch-card">
   <mat-card-header>
-    <mat-card-title *ngIf="card.title">{{card.title}}</mat-card-title>
+     <mat-card-title *ngIf="card.title !== undefined">{{card.title}}</mat-card-title>
     <mat-card-subtitle *ngIf="card.subtitle">{{card.subtitle}}</mat-card-subtitle>
   </mat-card-header>
   <img mat-card-image *ngIf="card.image" src="{{card.image}}" alt="Photo of a Shiba Inu">
@@ -9,6 +9,5 @@
       {{card.content}}
     </p>
   </mat-card-content>
-  <mat-card-actions>
-  </mat-card-actions>
+  <app-tinwork-card-action *ngIf="card.actions" [actionType]="card.type" [actions]="card.actions"></app-tinwork-card-action>
 </mat-card>
