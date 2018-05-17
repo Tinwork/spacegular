@@ -3,6 +3,7 @@ import { Launch } from 'src/app/models/launch';
 import { CapsuleInfo } from 'src/app/shared/models/CapsuleInfo';
 import { TinworkCard } from 'src/app/models/tinwork-card';
 import { RocketsInfo } from "../../shared/models/RocketsInfo";
+import { LaunchpadInfo } from "../../shared/models/LaunchpadInfo";
 
 function launchFactory (data: Array<Launch>) : Array<TinworkCard> {
   return data.map(object => {
@@ -56,6 +57,22 @@ function rocketFactory (data: Array<RocketsInfo>, actions: Array<any>) : Array<T
   });
 }
 
+/**
+ * Launchpad Factory
+ * 
+ * @param {Array<LaunchpadInfo>} data
+ * @return {Array<TinworkCard>}
+ */
+function launchpadFactory(data: Array<LaunchpadInfo>) : Array<TinworkCard> {
+  return data.map(data => {
+    return {
+      title: data.full_name,
+      subtitle: `Status: ${data.status}`,
+      content: data.details
+    }
+  });  
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -66,6 +83,8 @@ export class FactoryCard {
         return launchFactory(data)
       case 'capsule':
         return capsuleFactory(data)
+      case 'launchpad':
+        return launchpadFactory(data)
       case 'rocket':
         return rocketFactory(data, actions)
       default:

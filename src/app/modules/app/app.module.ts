@@ -16,6 +16,9 @@ import { TinworkCardComponent } from '../../shared/components/tinwork-card/tinwo
 import { LaunchListComponent } from '../launch-list/launch-list.component';
 import { RocketComponent } from '../rocket/rocket.component';
 import { TinworkCardActionComponent } from 'src/app/shared/components/tinwork-card-action/tinwork-card-action.component';
+import { LaunchpadComponent } from '../launchpad/launchpad.component';
+
+import { AgmCoreModule } from '@agm/core';
 
 @NgModule({
   declarations: [
@@ -26,6 +29,7 @@ import { TinworkCardActionComponent } from 'src/app/shared/components/tinwork-c
     CapsuleComponent,
     CardComponent,
     LaunchListComponent,
+    LaunchpadComponent,
     RocketComponent,
     TinworkCardComponent,
     TinworkCardActionComponent
@@ -35,6 +39,9 @@ import { TinworkCardActionComponent } from 'src/app/shared/components/tinwork-c
     RoutingModule,
     HttpClientModule,
     SharedModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyDgIM7Hcp_ITaYxN3oUTUyJE-cnS-7cTeE'
+    })
   ],
   entryComponents: [
     SidebarComponent,
