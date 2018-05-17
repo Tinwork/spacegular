@@ -1,4 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Inject } from '@angular/core';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material';
+import { CDK_DESCRIBEDBY_HOST_ATTRIBUTE } from '@angular/cdk/a11y';
 
 @Component({
   selector: 'app-input-builder',
@@ -6,39 +8,44 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./input-builder.component.css']
 })
 
-export class InputBuilderComponent implements OnInit {
+export class InputBuilderComponent {
   @Input() option: Object;
   inputs = [];
   now = new Date();
-
-  private INPUT_TYPE_BOOLEAN = [
-      'core_reuse',
-      'side_core1_reuse',
-      'side_core2_reuse',
-      'fairings_reuse',
-      'capsule_reuse',
-      'launch_success',
-      'reused',
-      'land_success'
-  ];
-
-  private INPUT_TYPE_SELECT = [
-  ];
-
-  private INPUT_TYPE_DATE = [
-      'launch_year',
-      'launch_date_local',
-      'launch_date_utc'
-  ];
   
-  constructor() { }
+  private INPUT_TYPE_BOOLEAN = [
+    'core_reuse',
+    'side_core1_reuse',
+    'side_core2_reuse',
+    'fairings_reuse',
+    'capsule_reuse',
+    'launch_success',
+    'reused',
+    'land_success'
+];
 
-  ngOnInit() {
+private INPUT_TYPE_SELECT = [
+];
+
+private INPUT_TYPE_DATE = [
+    'launch_year',
+    'launch_date_local',
+    'launch_date_utc'
+];
+
+  constructor(
+    public dialogRef: MatDialogRef<InputBuilderComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any
+  ) {
     this.buildInput();
   }
 
+  onNoClick(): void {
+    this.dialogRef.close();
+  }  
+
   buildInput() {
-    let options = this.option;
+    let options = this.data['option'][0];
     for (let option in options) {
       if (this.INPUT_TYPE_BOOLEAN.indexOf(option) !== -1) {
         this.inputs.push({
@@ -73,10 +80,6 @@ export class InputBuilderComponent implements OnInit {
     }
   }
 
-  observeFilteringAction() {
-    
-  }
-
   private formatKeyToLabelStandard(key: String) : String {
     let result = '', strArr = key.split('_');
     for (let word in strArr) {
@@ -93,3 +96,4 @@ export class InputBuilderComponent implements OnInit {
         .replace(/^(.)/, function($1) { return $1.toUpperCase(); });
   }
 }
+  

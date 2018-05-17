@@ -1,14 +1,17 @@
+<div class="tinwork-filter">
+    <button mat-raised-button (click)="openDialog()">Open filter</button>
+</div>
 <div class="tinwork-grid" *ngFor="let capsule of capsules; let i = index">
   <app-tinwork-card [card]="cardData[i]" class="example-card"></app-tinwork-card>
   <mat-tab-group>
-      <mat-tab label="Thruster">
-        <app-card [datas]="capsule.thrusters[0]"></app-card>
-      </mat-tab>
-      <mat-tab label="Payload">
-        <app-card [datas]="getPayloadData(capsule.id)"></app-card>
-      </mat-tab>
-      <mat-tab label="Trunk">
-        <app-card [datas]="capsule.trunk"></app-card>
-      </mat-tab>
-    </mat-tab-group>
+    <mat-tab label="Thruster">
+      <app-card [datas]="capsule.thrusters[0]"></app-card>
+    </mat-tab>
+    <mat-tab label="Payload">
+      <app-card [datas]="getPayloadData(capsule.id)"></app-card>
+    </mat-tab>
+    <mat-tab label="Trunk">
+      <app-card [datas]="capsule.trunk"></app-card>
+    </mat-tab>
+  </mat-tab-group>
 </div>

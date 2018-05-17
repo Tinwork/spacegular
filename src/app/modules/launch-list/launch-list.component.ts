@@ -6,6 +6,8 @@ import { LaunchOption } from '../../models/launch_option';
 import { TinworkCard } from 'src/app/models/tinwork-card';
 import { LaunchOptionFactory } from '../../factories/launch_option_factory';
 import { FactoryCard } from 'src/app/core/services/factory-card.service'
+import { MatDialog } from '@angular/material';
+import { InputBuilderComponent } from '../input-builder/input-builder.component';
 
 @Component({
   selector: 'app-launch-list',
@@ -20,7 +22,8 @@ export class LaunchListComponent implements OnInit {
   constructor(
     private factory: FactoryCard,
     private spaceXAPI: SpaceXAPIService,
-    private optionFactory: LaunchOptionFactory
+    private optionFactory: LaunchOptionFactory,
+    public dialog: MatDialog
   ) {}
 
   ngOnInit() {
@@ -45,5 +48,16 @@ export class LaunchListComponent implements OnInit {
   initOptions() {
       let factory = this.optionFactory.invoke();
       this.options = factory;
+  }
+
+
+  openDialog(): void {
+    let dialogRef = this.dialog.open(InputBuilderComponent, {
+      data: { option: this.options }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
   }
 }
