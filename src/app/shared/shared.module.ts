@@ -8,6 +8,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { MatTabsModule } from '@angular/material/tabs';
+import { MatGridListModule } from '@angular/material/grid-list';
 
 // Pipe
 import { KeysPipe } from './pipes/keys/keys.pipe';
@@ -24,7 +25,8 @@ import { TostringPipe } from './pipes/tostring/tostring.pipe';
     MatListModule,
     MatIconModule,
     MatCardModule,
-    MatTabsModule,
+    MatGridListModule,
+    MatTabsModule
   ],
   declarations: [
     KeysPipe,
@@ -39,6 +41,7 @@ import { TostringPipe } from './pipes/tostring/tostring.pipe';
     MatListModule,
     MatIconModule,
     MatCardModule,
+    MatGridListModule,
     MatTabsModule,
     TostringPipe
   ]
