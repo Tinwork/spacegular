@@ -10,7 +10,6 @@ import { HomeComponent } from '../home/home.component';
 import { SharedModule } from '../../shared/shared.module';
 import { SidebarComponent } from '../../shared/components/sidebar/sidebar.component';
 import { InputBuilderComponent } from '../input-builder/input-builder.component';
-import { LaunchComponent } from '../launch/launch.component';
 import { CapsuleComponent } from '../capsule/capsule.component';
 import { CardComponent } from '../../shared/components/card/card.component';
 import { TinworkCardComponent } from '../../shared/components/tinwork-card/tinwork-card.component';
@@ -22,7 +21,6 @@ import { LaunchListComponent } from '../launch-list/launch-list.component';
     HomeComponent,
     SidebarComponent,
     InputBuilderComponent,
-    LaunchComponent,
     CapsuleComponent,
     CardComponent,
     LaunchListComponent,
