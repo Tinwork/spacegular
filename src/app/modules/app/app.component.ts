@@ -29,7 +29,8 @@ export class AppComponent implements OnInit {
     this.sidebarData = [
       { url: 'home', icon: 'home' },
       { url: 'capsules', icon: 'eject' },
-      { url: 'launches', icon: 'launch'}
+      { url: 'launches', icon: 'launch' },
+      { url: 'launchpad', icon: 'gamepad' }
     ];
   }
 

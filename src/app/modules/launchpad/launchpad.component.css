@@ -1,0 +1,36 @@
+agm-map {
+  height: 40vh;
+}
+
+.launchpad {
+  background-image: url('/assets/img/launchpad.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: calc(60vh - 64px);
+  display: flex;
+}
+
+.box {
+  flex-grow: 1;
+}
+
+app-tinwork-card {
+  flex-grow: 1;
+}
+
+h3 {
+  margin: 0;
+  color: white;
+  text-align: center;
+  font-weight: 100;
+  font-size: 2em;
+  padding-top: 20px;
+}
+
+mat-form-field {
+  width: 80%;
+  text-align: center;
+  margin: 30px auto;
+  display: block;
+}
+

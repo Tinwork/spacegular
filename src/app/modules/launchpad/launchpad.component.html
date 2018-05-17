@@ -1,0 +1,18 @@
+<div class="launchpad">
+  <div class="box">
+      <h3>Select your launchpad</h3>
+      <mat-form-field>
+        <mat-select placeholder="Launchpad list" (selectionChange)="filterClick($event)">
+          <mat-option *ngFor="let pad of launchPadList" [value]="pad">
+            {{ pad }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+  </div>
+  <app-tinwork-card *ngFor="let pad of launchPadCard" [card]="pad" class="example-card"></app-tinwork-card>  
+</div>
+<div *ngIf="launchPad">
+  <agm-map [latitude]="launchPad.location.latitude" [longitude]="launchPad.location.longitude">
+    <agm-marker [latitude]="launchPad.location.latitude" [longitude]="launchPad.location.longitude"></agm-marker>
+  </agm-map>
+</div>
