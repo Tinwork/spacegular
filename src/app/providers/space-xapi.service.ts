@@ -13,6 +13,7 @@ import { Launch } from '../models/launch';
 import { LaunchPad } from '../models/launchpad';
 import { CoreDetail } from '../models/core_detail';
 import { CapsuleDetail } from '../models/capsule_detail';
+import { CapsuleInfo } from '../shared/models/CapsuleInfo';
 
 @Injectable({
   providedIn: 'root'
@@ -58,13 +59,10 @@ export class SpaceXAPIService {
    * 
    * @param {Object} filters 
    */
-  public getCapsules(filters): Observable<Capsule[]> {
+  public getCapsules(filters?: Object): Observable<CapsuleInfo[]> {
+    console.log(filters);
     return this.restClient
-      .fetch<Launch[]>(this.buildRequestURL('capsules', filters))
-      .pipe(
-        tap(console.log),
-        map(data => data)
-      )
+      .fetch<CapsuleInfo[]>(this.buildRequestURL('capsules', filters));
   }
 
   /**

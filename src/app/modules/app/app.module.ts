@@ -37,7 +37,8 @@ import { LaunchListComponent } from '../launch-list/launch-list.component';
   entryComponents: [
     SidebarComponent,
     CardComponent,
-    TinworkCardComponent
+    TinworkCardComponent,
+    InputBuilderComponent,
   ],
   providers: [],
   bootstrap: [AppComponent]
