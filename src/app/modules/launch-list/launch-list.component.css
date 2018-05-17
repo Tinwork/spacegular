@@ -1,0 +1,13 @@
+.launches-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+.launches {
+  min-width: 400px;
+}
+
+h2 {
+  text-align: center;
+}
