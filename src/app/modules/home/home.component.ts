@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpService } from '../../core/services/http.service';
+import { HttpService } from 'src/app/core/services/http.service';
 import { LaunchesInfo } from 'src/app/shared/models/LaunchesInfo';
-import { RocketsInfo } from '../../shared/models/RocketsInfo';
+import { RocketsInfo } from 'src/app/shared/models/RocketsInfo';
 import { TinworkCard } from 'src/app/models/tinwork-card';
-import { FactoryCard } from '../../core/services/factory-card.service';
+import { FactoryCard } from 'src/app/core/services/factory-card.service';
 
 @Component({
   selector: 'app-home',
