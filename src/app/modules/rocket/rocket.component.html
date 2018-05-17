@@ -1,0 +1,17 @@
+<div class="tinwork-grid">
+  <app-tinwork-card [card]="rocketCard" class="example-card"></app-tinwork-card>
+  <mat-tab-group>
+      <mat-tab label="Technical information">
+        <app-card [datas]="technical"></app-card>
+      </mat-tab>
+      <mat-tab label="First stage" *ngIf="rocket">
+        <app-card [datas]="rocket.first_stage"></app-card>
+      </mat-tab>
+      <mat-tab label="Second stage" *ngIf="rocket">
+          <app-card [datas]="rocket.second_stage"></app-card>
+      </mat-tab>
+      <mat-tab label="Engines" *ngIf="rocket">
+          <app-card [datas]="rocket.engines"></app-card>
+      </mat-tab>
+    </mat-tab-group>
+</div>

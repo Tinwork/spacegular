@@ -14,6 +14,8 @@ import { CapsuleComponent } from '../capsule/capsule.component';
 import { CardComponent } from '../../shared/components/card/card.component';
 import { TinworkCardComponent } from '../../shared/components/tinwork-card/tinwork-card.component';
 import { LaunchListComponent } from '../launch-list/launch-list.component';
+import { RocketComponent } from '../rocket/rocket.component';
+import { TinworkCardActionComponent } from 'src/app/shared/components/tinwork-card-action/tinwork-card-action.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { LaunchListComponent } from '../launch-list/launch-list.component';
     CapsuleComponent,
     CardComponent,
     LaunchListComponent,
-    TinworkCardComponent
+    RocketComponent,
+    TinworkCardComponent,
+    TinworkCardActionComponent
   ],
   imports: [
     BrowserModule,
@@ -36,6 +40,7 @@ import { LaunchListComponent } from '../launch-list/launch-list.component';
     SidebarComponent,
     CardComponent,
     TinworkCardComponent,
+    TinworkCardActionComponent,
     InputBuilderComponent,
   ],
   providers: [],
