@@ -92,6 +92,7 @@ export interface CapsuleInfo {
     trunk: Trunk;
     height_w_trunk: HeightWTrunk;
     diameter: Diameter;
+    image?: string;
 }
 
 

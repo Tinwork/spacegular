@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from '../../core/services/http.service';
 import { CapsuleInfo, LaunchPayloadMass, LaunchPayloadVol, ReturnPayloadVol } from '../../shared/models/CapsuleInfo';
+import { FactoryCard } from '../../core/services/factory-card.service';
+import { TinworkCard } from 'src/app/models/tinwork-card';
 
 @Component({
   selector: 'app-capsule',
@@ -10,14 +12,16 @@ import { CapsuleInfo, LaunchPayloadMass, LaunchPayloadVol, ReturnPayloadVol } fr
 export class CapsuleComponent implements OnInit {
 
   capsules: Array<CapsuleInfo> = [];
+  cardData: Array<TinworkCard> = [];
   capsulesImg: any = {
-    dragon1: 'http://www.spacex.com/sites/all/themes/spacex2012/images/dragon2/spacecraft.png',
+    dragon1: 'http://www.spacex.com/sites/spacex/files/images/dragon/tabs/dragon-lab.jpg',
     dragon2: 'https://lh3.googleusercontent.com/-xjQoNhElosE/VqhgnYbaA-I/AAAAAAAAOI0/XsPIVpDKdE4/w3840-h2160/D2%2BLanding.jpg',
     crewdragon: 'https://mk0spaceflightnoa02a.kinstacdn.com/wp-content/uploads/2016/07/crewdragon1.jpg'
   };
 
   constructor(
-    private http: HttpService
+    private http: HttpService,
+    private cardFactory: FactoryCard
   ) { }
 
   ngOnInit() {
@@ -33,8 +37,10 @@ export class CapsuleComponent implements OnInit {
     this.http.fetch<Array<CapsuleInfo>>('capsules')
       .subscribe(
         (res: Array<CapsuleInfo>) => {
-          console.log('success');
           this.capsules = res;
+          // update capsuleinfo to add the image on it
+          this.setCapsuleImg(res);
+          this.cardData = this.cardFactory.normalize('capsule', res);
         },
         (err: any) => {
           console.log(err);
@@ -48,15 +54,12 @@ export class CapsuleComponent implements OnInit {
    * @param {String} capsuleID 
    * @return {String} url
    */
-  getCapsuleImg(capsuleID: String) {
-    let url = '';
-    Object.keys(this.capsulesImg).forEach(c => {
-      if (c === capsuleID) {
-        url = this.capsulesImg[c];
-      }
-    });
+  setCapsuleImg(capsules: Array<CapsuleInfo>) {
+    return capsules.map(capsule => {
+      capsule.image = this.capsulesImg[capsule.id];
 
-    return url;
+      return capsule;
+    });
   }
 
   /**
@@ -80,12 +83,5 @@ export class CapsuleComponent implements OnInit {
     };
 
     return payload;
-  }
-
-  /**
-   * Filter Capsule
-   */
-  filterCapsule(criteria) {
-
   }
 }
