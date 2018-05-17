@@ -40,7 +40,7 @@ import { TinworkCardActionComponent } from 'src/app/shared/components/tinwork-c
     SidebarComponent,
     CardComponent,
     TinworkCardComponent,
-    TinworkCardActionComponent
+    TinworkCardActionComponent,
     InputBuilderComponent,
   ],
   providers: [],
