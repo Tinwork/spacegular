@@ -6,7 +6,6 @@ import { TinworkCard } from 'src/app/models/tinwork-card'
   templateUrl: './tinwork-card.component.html',
   styleUrls: ['./tinwork-card.component.css']
 })
-
 export class TinworkCardComponent implements OnInit {
   @Input() card: TinworkCard;
 

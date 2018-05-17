@@ -16,7 +16,6 @@ function launchFactory (data: Array<Launch>) : Array<TinworkCard> {
 @Injectable({
   providedIn: 'root'
 })
-
 export class FactoryCard {
   normalize(type: String, data: Array<any>) : Array<TinworkCard> {
     switch (type) {
