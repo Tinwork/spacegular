@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { Launch } from 'src/app/models/launch';
-import { CapsuleInfo } from '../../shared/models/CapsuleInfo';
+import { CapsuleInfo } from 'src/app/shared/models/CapsuleInfo';
 import { TinworkCard } from 'src/app/models/tinwork-card';
 
 function launchFactory (data: Array<Launch>) : Array<TinworkCard> {

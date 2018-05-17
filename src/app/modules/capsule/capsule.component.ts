@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from '../../core/services/http.service';
 import { CapsuleInfo, LaunchPayloadMass, LaunchPayloadVol, ReturnPayloadVol } from '../../shared/models/CapsuleInfo';
-import { FactoryCard } from '../../core/services/factory-card.service';
+import { FactoryCard } from 'src/app/core/services/factory-card.service';
 import { TinworkCard } from 'src/app/models/tinwork-card';
 
 @Component({
@@ -21,7 +21,7 @@ export class CapsuleComponent implements OnInit {
 
   constructor(
     private http: HttpService,
-    private cardFactory: FactoryCard
+    private factory: FactoryCard
   ) { }
 
   ngOnInit() {
@@ -39,8 +39,8 @@ export class CapsuleComponent implements OnInit {
         (res: Array<CapsuleInfo>) => {
           this.capsules = res;
           // update capsuleinfo to add the image on it
-          this.setCapsuleImg(res);
-          this.cardData = this.cardFactory.normalize('capsule', res);
+          const aggregateCapsule = this.setCapsuleImg(res);
+          this.cardData = this.factory.normalize('capsule', aggregateCapsule);
         },
         (err: any) => {
           console.log(err);
@@ -52,10 +52,11 @@ export class CapsuleComponent implements OnInit {
    * Get Capsule Img
    * 
    * @param {String} capsuleID 
-   * @return {String} url
+   * @return {Array<CapsuleInfo>} 
    */
   setCapsuleImg(capsules: Array<CapsuleInfo>) {
-    return capsules.map(capsule => {
+    const capsulesCopy = capsules.slice(0);
+    return capsulesCopy.map(capsule => {
       capsule.image = this.capsulesImg[capsule.id];
 
       return capsule;
