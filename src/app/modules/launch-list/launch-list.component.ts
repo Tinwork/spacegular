@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { SpaceXAPIService } from '../../providers/space-xapi.service';
 import { Launch } from '../../models/launch';
 import { LaunchOption } from '../../models/launch_option';
+import { TinworkCard } from 'src/app/models/tinwork-card';
 import { LaunchOptionFactory } from '../../factories/launch_option_factory';
 import { FactoryCard } from 'src/app/core/services/factory-card.service'
 
@@ -13,13 +14,13 @@ import { FactoryCard } from 'src/app/core/services/factory-card.service'
 })
 
 export class LaunchListComponent implements OnInit {
-  launches: Launch[]; 
+  launches: Array<TinworkCard>; 
   options: LaunchOption[];
 
   constructor(
     private factory: FactoryCard,
     private spaceXAPI: SpaceXAPIService,
-    private factory: LaunchOptionFactory
+    private optionFactory: LaunchOptionFactory
   ) {}
 
   ngOnInit() {
@@ -42,7 +43,7 @@ export class LaunchListComponent implements OnInit {
   }
 
   initOptions() {
-      let factory = this.factory.invoke();
+      let factory = this.optionFactory.invoke();
       this.options = factory;
   }
 }
