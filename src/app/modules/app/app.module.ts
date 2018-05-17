@@ -41,6 +41,7 @@ import { TinworkCardActionComponent } from 'src/app/shared/components/tinwork-c
     CardComponent,
     TinworkCardComponent,
     TinworkCardActionComponent
+    InputBuilderComponent,
   ],
   providers: [],
   bootstrap: [AppComponent]
