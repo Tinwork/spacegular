@@ -18,6 +18,24 @@ video {
 
 .home-content {
   color: white;
+  background-color: rgba(0,0,0,0.5);
+}
+
+.home-content #title {
+  text-align: center;
+  margin: 0;
+  padding-top: 20px;
+}
+
+
+.home-wrapper {
+  display: flex;
+  align-items: stretch;
+  flex-wrap: wrap;
+}
+
+.home-content div app-tinwork-card {
+  flex: 1 0 auto;
 }
 
 .home-content h2, .home-content p {

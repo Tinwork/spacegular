@@ -123,4 +123,5 @@ export interface RocketsInfo {
   engines: Engines;
   landing_legs: LandingLegs;
   description: string;
+  image?: string;
 }
