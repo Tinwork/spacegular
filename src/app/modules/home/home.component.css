@@ -7,3 +7,19 @@ p {
 .example-card {
   max-width: 400px;
 }
+
+video {
+  position: fixed;
+  top: 64px;
+  min-width: 100%; 
+  min-height: 100%;
+  z-index: -1;
+}
+
+.home-content {
+  color: white;
+}
+
+.home-content h2, .home-content p {
+  text-align: center;
+}
