@@ -24,7 +24,7 @@ import { TostringPipe } from './pipes/tostring/tostring.pipe';
     MatListModule,
     MatIconModule,
     MatCardModule,
-    MatTabsModule,
+    MatTabsModule
   ],
   declarations: [
     KeysPipe,

@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import { Launch } from 'src/app/models/launch';
 import { CapsuleInfo } from 'src/app/shared/models/CapsuleInfo';
 import { TinworkCard } from 'src/app/models/tinwork-card';
+import { RocketsInfo } from "../../shared/models/RocketsInfo";
 
 function launchFactory (data: Array<Launch>) : Array<TinworkCard> {
   return data.map(object => {
@@ -35,6 +36,23 @@ function capsuleFactory (data: Array<CapsuleInfo>) : Array<TinworkCard> {
   });
 }
 
+/**
+ * Rocket Factory
+ * 
+ * @param {Array<RocketsInfo>} data
+ * @return {Array<TinworkCard>}
+ */
+function rocketFactory (data: Array<RocketsInfo>) : Array<TinworkCard> {
+  return data.map(data => {
+    return {
+      title: data.name,
+      subtitle: `Status: ${data.active ? 'active' : 'no'}`,
+      image: data.image,
+      content: data.description
+    };
+  });
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -45,6 +63,8 @@ export class FactoryCard {
         return launchFactory(data)
       case 'capsule':
         return capsuleFactory(data)
+      case 'rocket':
+        return rocketFactory(data)
       default:
         throw new Error('No correct type defined')
     }
