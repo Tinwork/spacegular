@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 import { AppComponent } from '../app/app.component';
 import { HomeComponent } from '../home/home.component';
-import { LaunchComponent } from '../launch/launch.component';
 import { CapsuleComponent } from '../capsule/capsule.component';
 import { LaunchListComponent } from '../launch-list/launch-list.component';
 
