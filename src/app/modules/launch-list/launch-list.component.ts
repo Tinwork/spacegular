@@ -27,7 +27,7 @@ export class LaunchListComponent implements OnInit {
 
   initLaunches() {
     this.spaceXAPI.getLaunches({
-      'query_type': 'all',
+      'query_type': 'upcoming',
       'with_filter': false,
       'queries': {
         'flight_number': [1, 2, 3]

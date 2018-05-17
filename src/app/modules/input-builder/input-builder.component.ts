@@ -42,24 +42,30 @@ export class InputBuilderComponent implements OnInit {
     for (let option in options) {
       if (this.INPUT_TYPE_BOOLEAN.indexOf(option) !== -1) {
         this.inputs.push({
+          label: this.formatKeyToLabelStandard(option),
           key: option,
           type: "select",
-          value: ['Yes', 'No']   
+          value: [
+            { key: 1, value: 'Yes'}, 
+            { key: 0, value: 'No'}
+          ]   
         });
 
         continue;
       }
       if (this.INPUT_TYPE_DATE.indexOf(option) !== -1) {
         this.inputs.push({
+          label: this.formatKeyToLabelStandard(option),
           key: option,
           type: "date",
-          value: null   
+          value: this.now 
         });
 
         continue;
       }
 
       this.inputs.push({
+        label: this.formatKeyToLabelStandard(option),
         key: option,
         type: "text",
         value: null   
@@ -69,5 +75,21 @@ export class InputBuilderComponent implements OnInit {
 
   observeFilteringAction() {
     
+  }
+
+  private formatKeyToLabelStandard(key: String) : String {
+    let result = '', strArr = key.split('_');
+    for (let word in strArr) {
+      result = result + this.toCamelCase(strArr[word]) + ' '
+    }
+
+    return result;
+  }
+
+  private toCamelCase(str: String) : String {
+    return str
+        .replace(/\s(.)/g, function($1) { return $1.toUpperCase(); })
+        .replace(/\s/g, '')
+        .replace(/^(.)/, function($1) { return $1.toUpperCase(); });
   }
 }
