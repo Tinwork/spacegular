@@ -10,7 +10,7 @@ import { map } from 'rxjs/operators';
 export class AppComponent implements OnInit {
   title = 'app';
   deploy = false;
-  sidebarData: Array<String> = [];
+  sidebarData: Array<Object> = [];
 
   constructor(
     private http: HttpService
@@ -27,9 +27,9 @@ export class AppComponent implements OnInit {
    */
   setSidebarData() {
     this.sidebarData = [
-      'home',
-      'capsules',
-      'launches'
+      { url: 'home', icon: 'home' },
+      { url: 'capsules', icon: 'eject' },
+      { url: 'launches', icon: 'launch'}
     ];
   }
 
