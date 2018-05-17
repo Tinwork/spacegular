@@ -1,7 +1,8 @@
 import { Injectable } from "@angular/core";
 import { Launch } from 'src/app/models/launch';
+import { TinworkCard } from 'src/app/models/tinwork-card';
 
-function launchFactory (data: Array<Object>) : Array<Object> {
+function launchFactory (data: Array<Launch>) : Array<TinworkCard> {
   return data.map(object => {
     return {
       header: `${object.mission_name} - ${object.flight_number}`,
@@ -17,8 +18,7 @@ function launchFactory (data: Array<Object>) : Array<Object> {
 })
 
 export class FactoryCard {
-  normalize(type: String, data: Array<Object>) : Array<Object> {
-    console.log(type)
+  normalize(type: String, data: Array<any>) : Array<TinworkCard> {
     switch (type) {
       case 'launch':
         return launchFactory(data)

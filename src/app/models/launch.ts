@@ -69,7 +69,8 @@ export interface Links {
     video_link: string;
 }
 
-export interface Launch {
+export interface Launch extends Object {
+    mission_name: string;
     flight_number: number;
     launch_year: string;
     launch_date_unix: number;

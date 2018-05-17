@@ -32,7 +32,6 @@ export class LaunchListComponent implements OnInit {
     }).subscribe(
       (data: Launch[]) => {
         this.launches = this.factory.normalize('launch', data)
-        debugger
       }
     );
   }
