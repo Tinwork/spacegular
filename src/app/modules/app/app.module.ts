@@ -12,6 +12,7 @@ import { SidebarComponent } from '../../shared/components/sidebar/sidebar.compon
 import { LaunchComponent } from '../launch/launch.component';
 import { CapsuleComponent } from '../capsule/capsule.component';
 import { CardComponent } from '../../shared/components/card/card.component';
+import { TinworkCardComponent } from '../../shared/components/tinwork-card/tinwork-card.component';
 import { LaunchListComponent } from '../launch-list/launch-list.component';
 
 @NgModule({
@@ -22,7 +23,8 @@ import { LaunchListComponent } from '../launch-list/launch-list.component';
     LaunchComponent,
     CapsuleComponent,
     CardComponent,
-    LaunchListComponent
+    LaunchListComponent,
+    TinworkCardComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +34,8 @@ import { LaunchListComponent } from '../launch-list/launch-list.component';
   ],
   entryComponents: [
     SidebarComponent,
-    CardComponent
+    CardComponent,
+    TinworkCardComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

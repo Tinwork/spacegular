@@ -1,6 +1,8 @@
 export interface TinworkCard extends Object {
-  header: string;
-  subtitle: string;
-  content: string;
-  image: string;
+  avatar: String;
+  title: String;
+  subtitle: String;
+  content: String;
+  image: String;
+  actions: Array<any>;
 }

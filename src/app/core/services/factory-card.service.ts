@@ -5,7 +5,7 @@ import { TinworkCard } from 'src/app/models/tinwork-card';
 function launchFactory (data: Array<Launch>) : Array<TinworkCard> {
   return data.map(object => {
     return {
-      header: `${object.mission_name} - ${object.flight_number}`,
+      title: `${object.mission_name} - ${object.flight_number}`,
       subtitle: object.launch_year,
       content: object.details,
       image: object.links.mission_patch
