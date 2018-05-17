@@ -6,7 +6,10 @@ import { Component, OnInit, Input } from '@angular/core';
     <mat-drawer-container class="example-container" autosize>
       <mat-drawer #drawer class="example-sidenav" mode="side" [opened]="open">
         <mat-list>
-          <mat-list-item *ngFor="let item of items">{{item}}</mat-list-item>
+          <mat-list-item *ngFor="let item of items">
+            <mat-icon>{{item.icon}}</mat-icon>
+            <a routerLink="/{{item.url}}" routerLinkActive="active">{{item.url}}</a>
+          </mat-list-item>
         </mat-list>
       </mat-drawer>
 
@@ -16,7 +19,7 @@ import { Component, OnInit, Input } from '@angular/core';
     </mat-drawer-container>
   `,
   styles: [
-
+    'mat-icon { color: white; padding-right: 10px; }'
   ]
 })
 export class SidebarComponent implements OnInit {
