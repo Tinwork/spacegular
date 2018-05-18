@@ -1,3 +1,9 @@
-<p>
-  core works!
-</p>
+<section>
+  <h2>SpaceX - Cores</h2>
+  <div class="tinwork-filter">
+      <button mat-raised-button (click)="openDialog()">Open filter</button>
+  </div>
+  <div class="cores-container">
+    <app-tinwork-card class="cores" [card]="card"  *ngFor="let card of cores"></app-tinwork-card>
+  </div>
+</section>
