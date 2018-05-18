@@ -19,6 +19,7 @@ import { RocketComponent } from '../rocket/rocket.component';
 import { TinworkCardActionComponent } from 'src/app/shared/components/tinwork-card-action/tinwork-card-action.component';
 import { LaunchpadComponent } from '../launchpad/launchpad.component';
 import { CoreComponent } from 'src/app/modules/core/core.component'
+import { CompanyInfoComponent } from 'src/app/modules/company-info/company-info.component'
 
 import { AgmCoreModule } from '@agm/core';
 import { CapsComponent } from '../caps/caps.component';
@@ -37,7 +38,8 @@ import { CapsComponent } from '../caps/caps.component';
     TinworkCardComponent,
     TinworkCardActionComponent,
     CapsComponent,
-    CoreComponent
+    CoreComponent, 
+    CompanyInfoComponent
   ],
   imports: [
     BrowserModule,

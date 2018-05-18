@@ -9,6 +9,7 @@ import { CapsComponent } from '../caps/caps.component';
 import { CoreComponent } from 'src/app/modules/core/core.component'
 import { LaunchpadComponent } from 'src/app/modules/launchpad/launchpad.component'
 import { RocketComponent } from 'src/app/modules/rocket/rocket.component'
+import { CompanyInfoComponent } from 'src/app/modules/company-info/company-info.component'
 
 /**
  * @TODO enable LaunchComponent when ready
@@ -16,6 +17,7 @@ import { RocketComponent } from 'src/app/modules/rocket/rocket.component'
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'home', component: HomeComponent },
+  { path: 'info', component: CompanyInfoComponent },
   { path: 'capsules', component: CapsuleComponent},
   { path: 'launches', component: LaunchListComponent },
   { path: 'launchpad', component: LaunchpadComponent },

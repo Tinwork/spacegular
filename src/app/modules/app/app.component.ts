@@ -28,11 +28,12 @@ export class AppComponent implements OnInit {
   setSidebarData() {
     this.sidebarData = [
       { url: 'home', icon: 'home' },
+      { url: 'info', icon: 'info '},
       { url: 'capsules', icon: 'eject' },
       { url: 'caps', icon: 'event_seat' },
-      { url: 'launches', icon: 'launch' },
+      { url: 'launches', icon: 'launch' }, 
       { url: 'launchpad', icon: 'gamepad' },
-      { url: 'cores', icon: 'settings_input_component'}
+      { url: 'cores', icon: 'settings_input_component'},
     ];
   }
 
