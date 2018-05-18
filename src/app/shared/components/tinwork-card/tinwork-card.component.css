@@ -10,4 +10,10 @@
 
 mat-card {
   flex: 1;
+  flex: 1 1 0;
+}
+
+mat-chip-list {
+  position: absolute;
+  right: 10px;
 }

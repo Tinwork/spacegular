@@ -6,6 +6,7 @@ import { RocketsInfo } from "../../shared/models/RocketsInfo";
 import { LaunchpadInfo } from "../../shared/models/LaunchpadInfo";
 import { CapsuleDetailOption } from "../../shared/models/capsule_detail_option";
 import { CapsuleDetail } from "../../shared/models/CapsDetails";
+import { CoreDetail } from "../../models/core_detail";
 
 function launchFactory (data: Array<Launch>, actions: Array<any>) : Array<TinworkCard> {
   return data.map((object, index) => {
@@ -95,6 +96,39 @@ function launchpadFactory(data: Array<LaunchpadInfo>) : Array<TinworkCard> {
   });  
 }
 
+function chips(data: any) {
+  if (data.status === 'expended') {
+    return {
+      label: 'exp',
+      color: 'indigo'
+    }
+  } else if (data.status === 'active') {
+    return {
+      label: 'active',
+      color: 'primary'
+    }
+  } else {
+    return {
+      label: 'retired',
+      color: 'warn'
+    }
+  }
+}
+
+/**
+ * Core Factory
+ */
+function coreFactory(data: Array<CoreDetail>) : Array<TinworkCard> {
+  return data.map(data => {
+    return {
+      title: data.core_serial,
+      subtitle: `Status: ${data.status}`,
+      content: data.details,
+      chips: chips(data)
+    }
+  });
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -111,6 +145,8 @@ export class FactoryCard {
         return rocketFactory(data, actions)
       case 'caps':
         return capsFactory(data)
+      case 'core':
+        return coreFactory(data)
       default:
         throw new Error('No correct type defined')
     }

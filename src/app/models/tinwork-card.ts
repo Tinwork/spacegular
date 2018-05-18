@@ -6,4 +6,5 @@ export interface TinworkCard extends Object {
   image?: string;
   actions?: Array<any>;
   actionType?: string;
+  chips?: any;
 }

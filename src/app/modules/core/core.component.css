@@ -1,0 +1,11 @@
+.cores-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: stretch;
+  align-items: stretch;
+}
+
+mat-chip-list {
+  align-self: flex-end;
+}
