@@ -1,0 +1,8 @@
+<div class="tinwork-filter">
+    <button mat-raised-button (click)="openDialog()">Open filter</button>
+</div>
+<div class="tinwork-grid">
+    <div *ngFor="let capsule of tinworkCapsules">
+        <app-tinwork-card [card]="capsule" class="example-card"></app-tinwork-card>
+    </div>
+</div>

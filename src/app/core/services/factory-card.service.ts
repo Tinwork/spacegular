@@ -4,6 +4,8 @@ import { CapsuleInfo } from 'src/app/shared/models/CapsuleInfo';
 import { TinworkCard } from 'src/app/models/tinwork-card';
 import { RocketsInfo } from "../../shared/models/RocketsInfo";
 import { LaunchpadInfo } from "../../shared/models/LaunchpadInfo";
+import { CapsuleDetailOption } from "../../shared/models/capsule_detail_option";
+import { CapsuleDetail } from "../../shared/models/CapsDetails";
 
 function launchFactory (data: Array<Launch>, actions: Array<any>) : Array<TinworkCard> {
   return data.map((object, index) => {
@@ -58,6 +60,26 @@ function rocketFactory (data: Array<RocketsInfo>, actions: Array<any>) : Array<T
 }
 
 /**
+ * Caps Factory
+ * 
+ * @param {Array<CapsuleDetail>} data
+ * @return {Array<TinworkCard>}
+ */
+function capsFactory(data: Array<CapsuleDetail>) : Array<TinworkCard> {
+  return data.map(data => {
+    return {
+      title: data.capsule_serial,
+      subtitle: `Status: ${data.status}`,
+      content: `
+        launch: ${data.original_launch},
+        landing: ${data.landings},
+        details: ${data.details}
+      `
+    };
+  });
+}
+
+/**
  * Launchpad Factory
  * 
  * @param {Array<LaunchpadInfo>} data
@@ -87,6 +109,8 @@ export class FactoryCard {
         return launchpadFactory(data)
       case 'rocket':
         return rocketFactory(data, actions)
+      case 'caps':
+        return capsFactory(data)
       default:
         throw new Error('No correct type defined')
     }
