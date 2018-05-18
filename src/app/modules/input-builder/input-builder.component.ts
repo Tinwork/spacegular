@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Inject } from '@angular/core';
+import { Component, OnInit, Input, Inject, Directive } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material';
 import { CDK_DESCRIBEDBY_HOST_ATTRIBUTE } from '@angular/cdk/a11y';
 
@@ -21,6 +21,7 @@ export class InputBuilderComponent {
     'capsule_reuse',
     'launch_success',
     'reused',
+    'status',
     'land_success'
 ];
 
@@ -47,6 +48,32 @@ private INPUT_TYPE_DATE = [
   buildInput() {
     let options = this.data['option'][0];
     for (let option in options) {
+      if (option === 'query_type') {
+        this.inputs.push({
+          label: this.formatKeyToLabelStandard('query_type'),
+          key: 'query_type',
+          type: "select",
+          value: [ 
+            { key: 'all', value: 'All'},
+            { key: 'entity', value: 'Entity Detail'}, 
+            { key: 'upcoming', value: 'Upcoming'},
+            { key: 'latest', value: 'Latest'}, 
+          ]   
+        }); 
+        continue;
+      } 
+      if (option === 'query_filter_status') { 
+        this.inputs.push({
+          label: this.formatKeyToLabelStandard('query_filter_status'),
+          key: 'query_filter_status',
+          type: "select",
+          value: [ 
+            { key: 1, value: 'Yes'},
+            { key: 0, value: 'No'},
+          ]   
+        });
+        continue;
+      } 
       if (this.INPUT_TYPE_BOOLEAN.indexOf(option) !== -1) {
         this.inputs.push({
           label: this.formatKeyToLabelStandard(option),

@@ -8,6 +8,7 @@ import { LaunchOptionFactory } from '../../factories/launch_option_factory';
 import { FactoryCard } from 'src/app/core/services/factory-card.service'
 import { MatDialog } from '@angular/material';
 import { InputBuilderComponent } from '../input-builder/input-builder.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-launch-list',
@@ -18,26 +19,40 @@ import { InputBuilderComponent } from '../input-builder/input-builder.component'
 export class LaunchListComponent implements OnInit {
   launches: Array<TinworkCard>; 
   options: LaunchOption[];
+  private requestUrl = null;
+  private params = {};
 
   constructor(
     private factory: FactoryCard,
     private spaceXAPI: SpaceXAPIService,
     private optionFactory: LaunchOptionFactory,
+    private router: Router,
     public dialog: MatDialog
   ) {}
 
   ngOnInit() {
+    this.initRequestUrl();
     this.initLaunches();
     this.initOptions();
   }
 
+  initRequestUrl() {
+    this.requestUrl = this.router.url;
+    let requestUrl = this.requestUrl.replace(/.*\?/gm, '?');
+    let parts = requestUrl.substring(1).split('&');
+    for (var i = 0; i < parts.length; i++) {
+        var nv = parts[i].split('=');
+        if (!nv[0] || nv[0] === true) continue;
+        if (nv[1] === "") continue; 
+        this.params[nv[0]] = nv[1] || true;
+    }
+  }
+
   initLaunches() {
     this.spaceXAPI.getLaunches({
-      'query_type': 'upcoming',
-      'with_filter': false,
-      'queries': {
-        'flight_number': [1, 2, 3]
-      } 
+      'query_type': 'all',
+      'with_filter': true,
+      'queries': this.params
     }).subscribe(
       (data: Launch[]) => {
         this.launches = this.factory.normalize('launch', data)
@@ -49,7 +64,6 @@ export class LaunchListComponent implements OnInit {
       let factory = this.optionFactory.invoke();
       this.options = factory;
   }
-
 
   openDialog(): void {
     let dialogRef = this.dialog.open(InputBuilderComponent, {

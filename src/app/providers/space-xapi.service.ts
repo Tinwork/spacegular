@@ -60,7 +60,6 @@ export class SpaceXAPIService {
    * @param {Object} filters 
    */
   public getCapsules(filters?: Object): Observable<CapsuleInfo[]> {
-    console.log(filters);
     return this.restClient
       .fetch<CapsuleInfo[]>(this.buildRequestURL('capsules', filters));
   }
@@ -85,14 +84,8 @@ export class SpaceXAPIService {
    * @param {Object|null} filters 
    */
   public getLaunches(filters?: Object) : Observable<Launch[]> {
-    let url = this.buildRequestURL('launches', filters);
-
     return this.restClient
-      .fetch<Launch[]>(url)
-      .pipe(
-        tap(console.log),
-        map(data => data)
-      )
+      .fetch<Launch[]>(this.buildRequestURL('launches', filters));
   }
 
   /**
@@ -148,6 +141,15 @@ export class SpaceXAPIService {
       requestUrl = requestUrl + '/upcoming';
     }
 
+    if (params.query_type === 'entity') {
+      let id = typeof(params.queries.capsule_id) !== undefined ? params.queries.capsule_id : null 
+               || typeof(params.queries.launch_id) !== undefined ? params.queries.launch_id : null;
+      if (!id) {
+        requestUrl = requestUrl;   
+      } else {
+        requestUrl = requestUrl + '/' + id;
+      }
+    }
     if (params.with_filter === true) {
       requestUrl = requestUrl + '?' + this.buildHttpParams(params.queries).toString();
     }
