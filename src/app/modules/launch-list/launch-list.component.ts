@@ -8,6 +8,7 @@ import { LaunchOptionFactory } from '../../factories/launch_option_factory';
 import { FactoryCard } from 'src/app/core/services/factory-card.service'
 import { MatDialog } from '@angular/material';
 import { InputBuilderComponent } from '../input-builder/input-builder.component';
+import { LaunchesInfo } from '../../shared/models/LaunchesInfo';
 
 @Component({
   selector: 'app-launch-list',
@@ -40,7 +41,8 @@ export class LaunchListComponent implements OnInit {
       } 
     }).subscribe(
       (data: Launch[]) => {
-        this.launches = this.factory.normalize('launch', data)
+        const actions = this.getCardActions(data)
+        this.launches = this.factory.normalize('launch', data, actions)
       }
     );
   }
@@ -48,6 +50,27 @@ export class LaunchListComponent implements OnInit {
   initOptions() {
       let factory = this.optionFactory.invoke();
       this.options = factory;
+  }
+
+  getCardActions(launches: Array<LaunchesInfo>): Array<any> {
+    return launches.map(launch => {
+      return [
+        {
+          label: 'Rocket',
+          id: launch.rocket.rocket_id,
+          type: 'link',
+          data: launch,
+          baseUrl: 'rocket'
+        },
+        {
+          label: 'Launch site',
+          id: launch.launch_site.site_id,
+          type: 'link',
+          data: launch,
+          baseUrl: 'launchpad'
+        }
+      ];
+    });
   }
 
 

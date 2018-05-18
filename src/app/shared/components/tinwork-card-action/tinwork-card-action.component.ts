@@ -24,7 +24,7 @@ export class TinworkCardActionComponent implements OnInit {
   }
 
   handleClick(action: any) {
-    if (this.actionType === 'link') {
+    if (action.type === 'link') {
       this.router.navigate([`/${action.baseUrl}/${action.id}`]);
     }
 

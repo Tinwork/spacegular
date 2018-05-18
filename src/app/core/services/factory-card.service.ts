@@ -7,13 +7,14 @@ import { LaunchpadInfo } from "../../shared/models/LaunchpadInfo";
 import { CapsuleDetailOption } from "../../shared/models/capsule_detail_option";
 import { CapsuleDetail } from "../../shared/models/CapsDetails";
 
-function launchFactory (data: Array<Launch>) : Array<TinworkCard> {
-  return data.map(object => {
+function launchFactory (data: Array<Launch>, actions: Array<any>) : Array<TinworkCard> {
+  return data.map((object, index) => {
     return {
       title: `${object.mission_name} - ${object.flight_number}`,
       subtitle: object.launch_year,
       content: object.details,
-      image: object.links.mission_patch
+      image: object.links.mission_patch,
+      actions: actions[index] === undefined ? null : actions[index]
     }
   })
 }
@@ -53,8 +54,7 @@ function rocketFactory (data: Array<RocketsInfo>, actions: Array<any>) : Array<T
       subtitle: `Status: ${data.active ? 'active' : 'no'}`,
       image: data.image,
       content: data.description,
-      actions: actions[idx] === undefined ? null : [actions[idx]],
-      type: actions[idx] === undefined ? null : actions[idx].type,
+      actions: actions[idx] === undefined ? null : actions[idx]
     };
   });
 }
@@ -102,7 +102,7 @@ export class FactoryCard {
   normalize(type: String, data: Array<any>, actions: Array<any> = []) : Array<TinworkCard> {
     switch (type) {
       case 'launch':
-        return launchFactory(data)
+        return launchFactory(data, actions)
       case 'capsule':
         return capsuleFactory(data)
       case 'launchpad':

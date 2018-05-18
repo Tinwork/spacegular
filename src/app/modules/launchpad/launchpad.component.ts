@@ -3,6 +3,7 @@ import { HttpService } from 'src/app/core/services/http.service';
 import { LaunchpadInfo } from 'src/app/shared/models/LaunchpadInfo';
 import { FactoryCard } from 'src/app/core/services/factory-card.service';
 import { TinworkCard } from 'src/app/models/tinwork-card';
+import { Router, ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -24,10 +25,13 @@ export class LaunchpadComponent implements OnInit {
 
   constructor(
     private http: HttpService,
-    private factory: FactoryCard
+    private factory: FactoryCard,
+    private router: Router,
+    private route: ActivatedRoute,
   ) { }
 
   ngOnInit() {
+    this.launchPadId = this.route.snapshot.paramMap.get('id');
     this.getLaunchPad();
   }
 
@@ -42,7 +46,7 @@ export class LaunchpadComponent implements OnInit {
         this.launchPads = data;
         this.launchPadList = this.getLaunchPadList();
         // set a default launchpad
-        this.launchPadId = data[0].id;
+        this.launchPadId =  this.launchPadId || data[0].id;
         this.updateLaunchpad();
       },
       (err: any) => console.log(err)
@@ -56,6 +60,7 @@ export class LaunchpadComponent implements OnInit {
    * @void
    */
   updateLaunchpad() {
+    console.log(this.launchPadId)
     for (let idx = 0; idx < this.launchPads.length; idx++) {
       if (this.launchPads[idx].id === this.launchPadId) {
         this.launchPad = this.launchPads[idx];
