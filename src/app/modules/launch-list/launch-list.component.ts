@@ -22,6 +22,7 @@ export class LaunchListComponent implements OnInit {
   options: LaunchOption[];
   private requestUrl = null;
   private params = {};
+  private query = {};
 
   constructor(
     private factory: FactoryCard,
@@ -47,14 +48,21 @@ export class LaunchListComponent implements OnInit {
         if (nv[1] === "") continue; 
         this.params[nv[0]] = nv[1] || true;
     }
+
+    this.query['query_type'] = (this.params['query_type'] !== undefined) ? this.params['query_type'] : 'all';
+    delete this.params['query_type'];
+    var size = 0, key;
+    for (key in this.params) {
+        if (this.params.hasOwnProperty(key)) size++;
+    }
+    if (size >= 1) {
+      this.query['with_filter'] = true;   
+    }
+    this.query['queries'] = this.params;
   }
 
   initLaunches() {
-    this.spaceXAPI.getLaunches({
-      'query_type': 'all',
-      'with_filter': true,
-      'queries': this.params
-    }).subscribe(
+    this.spaceXAPI.getLaunches(this.query).subscribe(
       (data: Launch[]) => {
         const actions = this.getCardActions(data)
         this.launches = this.factory.normalize('launch', data, actions)
