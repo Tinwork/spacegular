@@ -1,3 +1,14 @@
-<p>
-  company-info works!
-</p>
+<div *ngIf="companyInfo">
+  <h1>{{companyInfo.name}}</h1>
+
+  <h2>Founder: {{companyInfo.founder}}</h2>
+
+  <h2>CEO: {{companyInfo.ceo}}</h2>
+
+  <h2>CTO: {{companyInfo.cto}}</h2>
+
+  <h2>COO: {{companyInfo.coo}}</h2>
+
+  <p>{{companyInfo.summary}}</p>
+
+</div>
