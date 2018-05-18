@@ -12,7 +12,7 @@ import { Capsule } from '../models/capsule';
 import { Launch } from '../models/launch';
 import { LaunchPad } from '../models/launchpad';
 import { CoreDetail } from '../models/core_detail';
-import { CapsuleDetail } from '../models/capsule_detail';
+import { CapsuleDetail } from 'src/app/shared/models/CapsDetails';
 import { CapsuleInfo } from '../shared/models/CapsuleInfo';
 
 @Injectable({

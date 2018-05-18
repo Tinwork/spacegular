@@ -20,6 +20,7 @@ import { LaunchpadComponent } from '../launchpad/launchpad.component';
 import { CoreComponent } from 'src/app/modules/core/core.component'
 
 import { AgmCoreModule } from '@agm/core';
+import { CapsComponent } from '../caps/caps.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { AgmCoreModule } from '@agm/core';
     RocketComponent,
     TinworkCardComponent,
     TinworkCardActionComponent,
+    CapsComponent,
     CoreComponent
   ],
   imports: [
