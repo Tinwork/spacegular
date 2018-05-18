@@ -1,4 +1,5 @@
 export interface LaunchOption {
+    query_type?: string;
     flight_number?: number;
     launch_year?: string;
     launch_date_utc?: string;
