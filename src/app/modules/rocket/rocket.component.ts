@@ -51,8 +51,7 @@ export class RocketComponent implements OnInit {
     }
 
     const savedRocket = this.storeService.getStore();
-
-    if (typeof savedRocket !== 'undefined') {
+    if (typeof savedRocket !== 'undefined' && this.isRocket(savedRocket)) {
       this.setRocketData(savedRocket);
       return;
     } 
@@ -62,6 +61,16 @@ export class RocketComponent implements OnInit {
         (data: RocketsInfo) => this.setRocketData(data),
         (err: any) => console.log(err)
       );
+  }
+
+  /**
+   * Is Rocket
+   * 
+   * @param {Any} data
+   * @return {Boolean} 
+   */
+  isRocket(data: any): Boolean {
+    return (<RocketsInfo>data).first_stage !== undefined;
   }
 
   /**
