@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, Injector } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http'; 
+import { NgHttpLoaderModule } from 'ng-http-loader/ng-http-loader.module';
 import { createCustomElement } from '@angular/elements';
 
 
@@ -42,6 +43,7 @@ import { CapsComponent } from '../caps/caps.component';
     BrowserModule,
     RoutingModule,
     HttpClientModule,
+    NgHttpLoaderModule,
     SharedModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyDgIM7Hcp_ITaYxN3oUTUyJE-cnS-7cTeE'
