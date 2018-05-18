@@ -5,8 +5,9 @@ import { AppComponent } from '../app/app.component';
 import { HomeComponent } from '../home/home.component';
 import { CapsuleComponent } from '../capsule/capsule.component';
 import { LaunchListComponent } from '../launch-list/launch-list.component';
-import { RocketComponent } from '../rocket/rocket.component';
-import { LaunchpadComponent } from '../launchpad/launchpad.component';
+import { CoreComponent } from 'src/app/modules/core/core.component'
+import { LaunchpadComponent } from 'src/app/modules/launchpad/launchpad.component'
+import { RocketComponent } from 'src/app/modules/rocket/rocket.component'
 
 /**
  * @TODO enable LaunchComponent when ready
@@ -17,7 +18,8 @@ const routes: Routes = [
   { path: 'capsules', component: CapsuleComponent},
   { path: 'launches', component: LaunchListComponent },
   { path: 'launchpad', component: LaunchpadComponent },
-  { path: 'rocket/:id', component: RocketComponent }
+  { path: 'rocket/:id', component: RocketComponent },
+  { path: 'cores', component: CoreComponent }
 ];
 
 @NgModule({
