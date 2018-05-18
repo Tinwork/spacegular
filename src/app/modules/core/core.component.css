@@ -8,4 +8,9 @@
 
 mat-chip-list {
   align-self: flex-end;
+  flex: 1;
+}
+
+.cores {
+  flex: 1;
 }
