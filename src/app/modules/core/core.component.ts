@@ -13,7 +13,7 @@ import { InputBuilderComponent } from 'src/app/modules/input-builder/input-build
 })
 export class CoreComponent implements OnInit {
 
-  launches: Array<TinworkCard>; 
+  cores: Array<TinworkCard>; 
   options: any; // TODO: add options from Core
 
   constructor(
