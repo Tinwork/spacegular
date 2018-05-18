@@ -19,6 +19,7 @@ import { TinworkCardActionComponent } from 'src/app/shared/components/tinwork-c
 import { LaunchpadComponent } from '../launchpad/launchpad.component';
 
 import { AgmCoreModule } from '@agm/core';
+import { CapsComponent } from '../caps/caps.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { AgmCoreModule } from '@agm/core';
     LaunchpadComponent,
     RocketComponent,
     TinworkCardComponent,
-    TinworkCardActionComponent
+    TinworkCardActionComponent,
+    CapsComponent
   ],
   imports: [
     BrowserModule,
