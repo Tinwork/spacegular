@@ -8,6 +8,9 @@ import { LaunchListComponent } from '../launch-list/launch-list.component';
 import { RocketComponent } from '../rocket/rocket.component';
 import { LaunchpadComponent } from '../launchpad/launchpad.component';
 import { CapsComponent } from '../caps/caps.component';
+import { CoreComponent } from 'src/app/modules/core/core.component'
+import { LaunchpadComponent } from 'src/app/modules/launchpad/launchpad.component'
+import { RocketComponent } from 'src/app/modules/rocket/rocket.component'
 
 /**
  * @TODO enable LaunchComponent when ready
@@ -18,8 +21,10 @@ const routes: Routes = [
   { path: 'capsules', component: CapsuleComponent},
   { path: 'launches', component: LaunchListComponent },
   { path: 'launchpad', component: LaunchpadComponent },
-  { path: 'caps', component: CapsComponent }
-  { path: 'rocket/:id', component: RocketComponent }
+  { path: 'caps', component: CapsComponent },
+  { path: 'rocket/:id', component: RocketComponent },
+  { path: 'rocket/:id', component: RocketComponent },
+  { path: 'cores', component: CoreComponent }
 ];
 
 @NgModule({

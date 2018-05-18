@@ -17,6 +17,7 @@ import { LaunchListComponent } from '../launch-list/launch-list.component';
 import { RocketComponent } from '../rocket/rocket.component';
 import { TinworkCardActionComponent } from 'src/app/shared/components/tinwork-card-action/tinwork-card-action.component';
 import { LaunchpadComponent } from '../launchpad/launchpad.component';
+import { CoreComponent } from 'src/app/modules/core/core.component'
 
 import { AgmCoreModule } from '@agm/core';
 import { CapsComponent } from '../caps/caps.component';
@@ -34,7 +35,8 @@ import { CapsComponent } from '../caps/caps.component';
     RocketComponent,
     TinworkCardComponent,
     TinworkCardActionComponent,
-    CapsComponent
+    CapsComponent,
+    CoreComponent
   ],
   imports: [
     BrowserModule,
