@@ -1,14 +1,15 @@
 <div *ngIf="companyInfo">
+
   <h1>{{companyInfo.name}}</h1>
 
-  <h2>Founder: {{companyInfo.founder}}</h2>
+  <div class="founders">
+    <app-tinwork-card class="founder-card" [card]="{ title: companyInfo.ceo, subtitle: 'CEO (Founder)'}"></app-tinwork-card>
+    <app-tinwork-card class="founder-card" [card]="{ title: companyInfo.cto, subtitle: 'CTO'}"></app-tinwork-card>
+    <app-tinwork-card class="founder-card" [card]="{ title: companyInfo.coo, subtitle: 'COO'}"></app-tinwork-card>
+  </div>
 
-  <h2>CEO: {{companyInfo.ceo}}</h2>
-
-  <h2>CTO: {{companyInfo.cto}}</h2>
-
-  <h2>COO: {{companyInfo.coo}}</h2>
-
-  <p>{{companyInfo.summary}}</p>
+  <div class="founders">
+    <app-tinwork-card class="founder-content" [card]="{ title: 'Detail', subtitle: companyInfo.summary}"></app-tinwork-card>
+  </div>
 
 </div>

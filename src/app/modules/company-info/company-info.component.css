@@ -1,0 +1,15 @@
+h1, h2, h3 {
+  text-align: center;
+}
+
+.founders {
+  display: flex;
+}
+
+.founder-card {
+  flex: 1;
+}
+
+.founders .launch-card {
+  min-width: 100%;
+}
