@@ -30,7 +30,8 @@ export class AppComponent implements OnInit {
       { url: 'home', icon: 'home' },
       { url: 'capsules', icon: 'eject' },
       { url: 'launches', icon: 'launch' },
-      { url: 'launchpad', icon: 'gamepad' }
+      { url: 'launchpad', icon: 'gamepad' },
+      { url: 'cores', icon: 'core'}
     ];
   }
 
