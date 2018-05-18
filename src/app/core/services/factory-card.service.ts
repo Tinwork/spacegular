@@ -45,16 +45,18 @@ function capsuleFactory (data: Array<CapsuleInfo>) : Array<TinworkCard> {
  * @return {Array<TinworkCard>}
  */
 function rocketFactory (data: Array<RocketsInfo>, actions: Array<any>) : Array<TinworkCard> {
-  return data.map((data, idx) => {
+  const caca = data.map((data, idx) => {
+    console.log(actions)
     return {
       title: data.name,
       subtitle: `Status: ${data.active ? 'active' : 'no'}`,
       image: data.image,
       content: data.description,
-      actions: actions[idx] === undefined ? null : [actions[idx]],
-      type: actions[idx] === undefined ? null : actions[idx].type,
+      actions: actions[idx] === undefined ? null : actions[idx]
     };
   });
+  console.log(caca)
+  return caca
 }
 
 /**
