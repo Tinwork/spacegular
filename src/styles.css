@@ -32,3 +32,9 @@ a {
   margin-left: 20px;
   margin-bottom: 20px;
 }
+
+app-caps .launch-card,
+app-home .launch-card,
+app-launch-list .launch-card {
+  max-width: 300px !important;
+}
