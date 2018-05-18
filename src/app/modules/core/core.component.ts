@@ -5,6 +5,9 @@ import { LaunchOptionFactory } from 'src/app/factories/launch_option_factory';
 import { FactoryCard } from 'src/app/core/services/factory-card.service';
 import { TinworkCard } from 'src/app/models/tinwork-card';
 import { InputBuilderComponent } from 'src/app/modules/input-builder/input-builder.component';
+import { CoreDetail } from 'src/app/models/core_detail';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-core',
@@ -14,27 +17,47 @@ import { InputBuilderComponent } from 'src/app/modules/input-builder/input-build
 export class CoreComponent implements OnInit {
 
   cores: Array<TinworkCard>; 
-  options: any; // TODO: add options from Core
+  private options: any = {}; // TODO: add options from Core
+  private requestUrl = null;
 
   constructor(
     private factory: FactoryCard,
     private spaceXAPI: SpaceXAPIService,
     private optionFactory: LaunchOptionFactory,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private router: Router
   ) {}
 
   ngOnInit() {
-    this.initCores();
+    this.initRequestUrl();
+    this.initCores(null);
     this.initOptions();
   }
 
-  initCores() {
+  initRequestUrl() {
+    this.requestUrl = this.router.url;
+    let requestUrl = this.requestUrl.replace(/.*\?/gm, '?');
+    let parts = requestUrl.substring(1).split('&');
+    for (var i = 0; i < parts.length; i++) {
+        var nv = parts[i].split('=');
+        console.log(nv);
+        if (!nv[0] || nv[0] === true) continue;
+        if (nv[1] === true) continue; 
+        this.options[nv[0]] = nv[1] || true;
+    }
+  }
+
+  initCores(filter: any) {
     // TODO: add core from SpaceX API
-    // this.spaceXAPI.getCores().subscribe(
-    //   (data: Core[]) => { // TODO: add Core Model
-    //     this.launches = this.factory.normalize('launch', data)
-    //   }
-    // );
+    this.spaceXAPI.getDetailedCoreData({
+      'query_type': 'entity',
+      'with_filter': false,
+      'queries': this.options
+    }).subscribe(
+      (data: CoreDetail[]) => {
+        this.cores = this.factory.normalize('core', data)
+      }
+    );
   }
 
   initOptions() {
@@ -48,7 +71,9 @@ export class CoreComponent implements OnInit {
       data: { option: this.options }
     });
 
-    dialogRef.afterClosed().subscribe(result => {});
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(result);
+    });
   }
 
 }
