@@ -123,6 +123,7 @@ export class SpaceXAPIService {
    * @param params 
    */
   private buildRequestURL(entity: String, params) {
+    console.log(params);
     let requestUrl = entity;
     
     if (!params || typeof params.query_type === 'undefined') {
@@ -142,8 +143,15 @@ export class SpaceXAPIService {
     }
 
     if (params.query_type === 'entity') {
-      let id = typeof(params.queries.capsule_id) !== undefined ? params.queries.capsule_id : null 
-               || typeof(params.queries.launch_id) !== undefined ? params.queries.launch_id : null;
+      let id = false;
+      if (!this.isEmpty(params.queries.capsule_id)) {
+        id = params.queries.capsule_id;
+      } else if (!this.isEmpty(params.queries.launch_id)) {
+        id = params.queries.launch_id;
+      } else if (!this.isEmpty(params.queries.core_serial)) {
+        id = params.queries.core_serial;
+      }
+
       if (!id) {
         requestUrl = requestUrl;   
       } else {
@@ -154,8 +162,24 @@ export class SpaceXAPIService {
       requestUrl = requestUrl + '?' + this.buildHttpParams(params.queries).toString();
     }
 
+    console.log(requestUrl);
+
     return requestUrl;
   }
+
+  isEmpty(mixed_var: any) {
+    var undef, key, i, len;
+    var emptyValues = [undef, null, false, 0, '', '0'];
+    for (i = 0, len = emptyValues.length; i < len; i++)
+      if (mixed_var === emptyValues[i])
+        return true;
+    if (typeof mixed_var === 'object') {
+      for (key in mixed_var)
+        return false;
+      return true;
+    }
+    return false;
+  };
 
   /**
    * Build HTTP parameters
