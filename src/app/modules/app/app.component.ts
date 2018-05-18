@@ -31,7 +31,7 @@ export class AppComponent implements OnInit {
       { url: 'capsules', icon: 'eject' },
       { url: 'launches', icon: 'launch' },
       { url: 'launchpad', icon: 'gamepad' },
-      { url: 'cores', icon: 'core'}
+      { url: 'cores', icon: 'settings_input_component'}
     ];
   }
 
