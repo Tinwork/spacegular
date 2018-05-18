@@ -1,19 +1,22 @@
-<div *ngFor="let input of inputs" layout="row">
-  <mat-form-field *ngIf="input.type === 'text'">
-      <input matInput placeholder="{{input.label}}">
-  </mat-form-field>
-  <mat-form-field *ngIf="input.type === 'select'">
-    <mat-select placeholder="{{input.label}}"> 
-      <mat-option *ngFor="let option of input.value" [value]="option.key">
-        {{option.value}}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
-  <mat-form-field  *ngIf="input.type === 'date'" class="example-full-width">
-      <input matInput [matDatepicker]="picker" placeholder="{{input.label}}">
-      <mat-datepicker-toggle matSuffix [for]="picker">
-        <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
-      </mat-datepicker-toggle>
-      <mat-datepicker #picker></mat-datepicker>
-  </mat-form-field>
-</div>
+<form>
+  <div *ngFor="let input of inputs" layout="row" class="filter-container">
+    <mat-form-field *ngIf="input.type === 'text'" class="filter">
+        <input matInput placeholder="{{input.label}}" name="{{input.key}}">
+    </mat-form-field>
+    <mat-form-field *ngIf="input.type === 'select'" class="filter">
+      <mat-select placeholder="{{input.label}}"> 
+        <mat-option *ngFor="let option of input.value" [value]="option.key">
+          {{option.value}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field  *ngIf="input.type === 'date'" class="filter">
+        <input matInput [matDatepicker]="picker" placeholder="{{input.label}}" name="{{input.key}}">
+        <mat-datepicker-toggle matSuffix [for]="picker">
+          <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+        </mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+  </div>
+  <button mat-button type="submit" class="waves-effect waves-light btn">Submit</button>
+</form>

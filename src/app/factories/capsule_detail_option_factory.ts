@@ -9,7 +9,6 @@ export class CapsuleDetailOptionFactory {
     
     public invoke(config?: Object): CapsuleDetailOption[] {    
         return [{
-            capsule_serial: null,
             capsule_id: null,
             status: null,
             original_launch: null,

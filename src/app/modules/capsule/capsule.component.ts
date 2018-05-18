@@ -8,6 +8,8 @@ import { CapsuleDetailOptionFactory } from '../../factories/capsule_detail_optio
 import { SpaceXAPIService } from '../../providers/space-xapi.service';
 import { MatDialog } from '@angular/material';
 import { InputBuilderComponent } from '../input-builder/input-builder.component';
+import { Router } from '@angular/router';
+import { isArray } from 'util';
 
 @Component({
   selector: 'app-capsule',
@@ -15,7 +17,8 @@ import { InputBuilderComponent } from '../input-builder/input-builder.component'
   styleUrls: ['./capsule.component.css']
 })
 export class CapsuleComponent implements OnInit {
-
+  private requestUrl = null;
+  private params = {};
   capsules: Array<CapsuleInfo> = [];
   cardData: Array<TinworkCard> = [];
   capsulesImg: any = {
@@ -30,12 +33,27 @@ export class CapsuleComponent implements OnInit {
     private factory: FactoryCard,
     private spaceXAPI: SpaceXAPIService,
     private optionFactory: CapsuleDetailOptionFactory,
+    private router: Router,
     public dialog: MatDialog
   ) { }
 
   ngOnInit() {
+    this.initRequestUrl();
     this.getAllCapsule();
     this.initOptions();
+  }
+
+  initRequestUrl() {
+    this.requestUrl = this.router.url;
+    let requestUrl = this.requestUrl.replace(/.*\?/gm, '?');
+    let parts = requestUrl.substring(1).split('&');
+    for (var i = 0; i < parts.length; i++) {
+        var nv = parts[i].split('=');
+        console.log(nv);
+        if (!nv[0] || nv[0] === true) continue;
+        if (nv[1] === true) continue; 
+        this.params[nv[0]] = nv[1] || true;
+    }
   }
 
   /**
@@ -44,8 +62,15 @@ export class CapsuleComponent implements OnInit {
    * @void
    */
   getAllCapsule() {
-    this.spaceXAPI.getCapsules().subscribe(
-      (res: Array<CapsuleInfo>) => {
+    this.spaceXAPI.getCapsules({
+      'query_type': 'entity',
+      'with_filter': false,
+      'queries': this.params 
+    }).subscribe(
+      (res: any) => {
+        if (!isArray(res)) {
+          res = [res];
+        } 
         this.capsules = res;
         // update capsuleinfo to add the image on it
         const aggregateCapsule = this.setCapsuleImg(res);
