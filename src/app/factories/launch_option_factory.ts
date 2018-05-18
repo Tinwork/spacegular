@@ -9,6 +9,7 @@ export class LaunchOptionFactory {
     
     public invoke(config?: Object): LaunchOption[] {    
         return [{
+            query_type: null,
             flight_number: null,
             launch_year: null,
             launch_date_utc: null,
