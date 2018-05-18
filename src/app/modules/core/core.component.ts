@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { SpaceXAPIService } from 'src/app/providers/space-xapi.service';
-import { LaunchOptionFactory } from 'src/app/factories/launch_option_factory';
+import { CoreDetailOptionFactory } from 'src/app/factories/core_detail_option_factory';
 import { FactoryCard } from 'src/app/core/services/factory-card.service';
 import { TinworkCard } from 'src/app/models/tinwork-card';
 import { InputBuilderComponent } from 'src/app/modules/input-builder/input-builder.component';
@@ -23,7 +23,7 @@ export class CoreComponent implements OnInit {
   constructor(
     private factory: FactoryCard,
     private spaceXAPI: SpaceXAPIService,
-    private optionFactory: LaunchOptionFactory,
+    private optionFactory: CoreDetailOptionFactory,
     public dialog: MatDialog,
     private router: Router
   ) {}
@@ -43,18 +43,24 @@ export class CoreComponent implements OnInit {
         console.log(nv);
         if (!nv[0] || nv[0] === true) continue;
         if (nv[1] === true) continue; 
-        this.options[nv[0]] = nv[1] || true;
+        this.options[nv[0]] = nv[1] || false;
     }
   }
 
   initCores(filter: any) {
+    const length = Object.keys(this.options).length;
+    console.log(length);
     // TODO: add core from SpaceX API
     this.spaceXAPI.getDetailedCoreData({
       'query_type': 'entity',
       'with_filter': false,
       'queries': this.options
     }).subscribe(
-      (data: CoreDetail[]) => {
+      (data: any) => {
+        if (!Array.isArray(data)) {
+          data = [data];
+        }
+
         this.cores = this.factory.normalize('core', data)
       }
     );
