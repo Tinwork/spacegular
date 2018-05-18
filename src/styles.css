@@ -36,5 +36,5 @@ a {
 app-caps .launch-card,
 app-home .launch-card,
 app-launch-list .launch-card {
-  max-width: 300px !important;
+  max-width: calc(33vw - 90px) !important;
 }
