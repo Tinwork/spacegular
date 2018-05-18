@@ -36,6 +36,7 @@ export class CapsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.initOptions();
     this.getCaps(null);
   }
 
