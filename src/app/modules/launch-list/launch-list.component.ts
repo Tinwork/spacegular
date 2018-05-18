@@ -41,7 +41,8 @@ export class LaunchListComponent implements OnInit {
       } 
     }).subscribe(
       (data: Launch[]) => {
-        this.launches = this.factory.normalize('launch', data)
+        const actions = this.getCardActions(data)
+        this.launches = this.factory.normalize('launch', data, actions)
       }
     );
   }
@@ -53,13 +54,22 @@ export class LaunchListComponent implements OnInit {
 
   getCardActions(launches: Array<LaunchesInfo>): Array<any> {
     return launches.map(launch => {
-      return {
-        label: 'see more',
-        id: launch.id,
-        type: 'link',
-        data: launch,
-        baseUrl: 'rocket'
-      };
+      return [
+        {
+          label: 'Rocket',
+          id: launch.rocket.rocket_id,
+          type: 'link',
+          data: launch,
+          baseUrl: 'rocket'
+        },
+        {
+          label: 'Launch site',
+          id: launch.launch_site.site_id,
+          type: 'link',
+          data: launch,
+          baseUrl: 'launchpad'
+        }
+      ];
     });
   }
 

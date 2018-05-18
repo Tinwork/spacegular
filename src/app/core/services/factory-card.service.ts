@@ -5,13 +5,14 @@ import { TinworkCard } from 'src/app/models/tinwork-card';
 import { RocketsInfo } from "../../shared/models/RocketsInfo";
 import { LaunchpadInfo } from "../../shared/models/LaunchpadInfo";
 
-function launchFactory (data: Array<Launch>) : Array<TinworkCard> {
-  return data.map(object => {
+function launchFactory (data: Array<Launch>, actions: Array<any>) : Array<TinworkCard> {
+  return data.map((object, index) => {
     return {
       title: `${object.mission_name} - ${object.flight_number}`,
       subtitle: object.launch_year,
       content: object.details,
-      image: object.links.mission_patch
+      image: object.links.mission_patch,
+      actions: actions[index] === undefined ? null : actions[index]
     }
   })
 }
@@ -45,8 +46,7 @@ function capsuleFactory (data: Array<CapsuleInfo>) : Array<TinworkCard> {
  * @return {Array<TinworkCard>}
  */
 function rocketFactory (data: Array<RocketsInfo>, actions: Array<any>) : Array<TinworkCard> {
-  const caca = data.map((data, idx) => {
-    console.log(actions)
+  return data.map((data, idx) => {
     return {
       title: data.name,
       subtitle: `Status: ${data.active ? 'active' : 'no'}`,
@@ -55,8 +55,6 @@ function rocketFactory (data: Array<RocketsInfo>, actions: Array<any>) : Array<T
       actions: actions[idx] === undefined ? null : actions[idx]
     };
   });
-  console.log(caca)
-  return caca
 }
 
 /**
@@ -82,7 +80,7 @@ export class FactoryCard {
   normalize(type: String, data: Array<any>, actions: Array<any> = []) : Array<TinworkCard> {
     switch (type) {
       case 'launch':
-        return launchFactory(data)
+        return launchFactory(data, actions)
       case 'capsule':
         return capsuleFactory(data)
       case 'launchpad':

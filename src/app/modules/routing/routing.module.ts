@@ -18,6 +18,7 @@ const routes: Routes = [
   { path: 'capsules', component: CapsuleComponent},
   { path: 'launches', component: LaunchListComponent },
   { path: 'launchpad', component: LaunchpadComponent },
+  { path: 'launchpad/:id', component: LaunchpadComponent },
   { path: 'rocket/:id', component: RocketComponent },
   { path: 'cores', component: CoreComponent }
 ];
