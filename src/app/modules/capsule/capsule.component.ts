@@ -3,7 +3,7 @@ import { HttpService } from '../../core/services/http.service';
 import { CapsuleInfo, LaunchPayloadMass, LaunchPayloadVol, ReturnPayloadVol } from '../../shared/models/CapsuleInfo';
 import { FactoryCard } from 'src/app/core/services/factory-card.service';
 import { TinworkCard } from 'src/app/models/tinwork-card';
-import { CapsuleDetailOption } from '../../models/capsule_detail_option';
+import { CapsuleDetailOption } from 'src/app/shared/models/capsule_detail_option';
 import { CapsuleDetailOptionFactory } from '../../factories/capsule_detail_option_factory';
 import { SpaceXAPIService } from '../../providers/space-xapi.service';
 import { MatDialog } from '@angular/material';

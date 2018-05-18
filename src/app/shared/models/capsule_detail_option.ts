@@ -7,5 +7,6 @@ export interface CapsuleDetailOption {
     original_launch?: string,
     missions?: string,
     landings?: string,
-    type?: string
+    type?: string,
+    details?: string,
 }

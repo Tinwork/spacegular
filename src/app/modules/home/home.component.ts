@@ -40,6 +40,7 @@ export class HomeComponent implements OnInit {
       (data: RocketsInfo[]) => { 
         const aggregateData = this.setImg(data);
         const actions = this.getCardActions(data);
+        console.log(actions)
         this.rockets = this.factory.normalize('rocket', aggregateData, actions);
       },
       (err: any) => console.log(err)
@@ -68,15 +69,17 @@ export class HomeComponent implements OnInit {
    * @param {Array<RocketsInfo>} rockets
    * @return {Array<any>}
    */
-  getCardActions(rockets: Array<RocketsInfo>): Array<any> {
+  getCardActions(rockets: Array<RocketsInfo>): Array<Array<any>> {
     return rockets.map(r => {
-      return {
-        label: 'see more',
-        id: r.id,
-        type: 'link',
-        data: r,
-        baseUrl: 'rocket'
-      };
+      return [
+        {
+          label: 'see more',
+          id: r.id,
+          type: 'link',
+          data: r,
+          baseUrl: 'rocket'
+        }
+      ];
     });
   }
 }

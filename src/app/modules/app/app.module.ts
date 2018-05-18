@@ -1,7 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, Injector } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http'; 
-import { createCustomElement } from '@angular/elements'; 
+import { NgHttpLoaderModule } from 'ng-http-loader/ng-http-loader.module';
+import { createCustomElement } from '@angular/elements';
 
 
 import { AppComponent } from './app.component';
@@ -17,8 +18,10 @@ import { LaunchListComponent } from '../launch-list/launch-list.component';
 import { RocketComponent } from '../rocket/rocket.component';
 import { TinworkCardActionComponent } from 'src/app/shared/components/tinwork-card-action/tinwork-card-action.component';
 import { LaunchpadComponent } from '../launchpad/launchpad.component';
+import { CoreComponent } from 'src/app/modules/core/core.component'
 
 import { AgmCoreModule } from '@agm/core';
+import { CapsComponent } from '../caps/caps.component';
 
 @NgModule({
   declarations: [
@@ -32,12 +35,15 @@ import { AgmCoreModule } from '@agm/core';
     LaunchpadComponent,
     RocketComponent,
     TinworkCardComponent,
-    TinworkCardActionComponent
+    TinworkCardActionComponent,
+    CapsComponent,
+    CoreComponent
   ],
   imports: [
     BrowserModule,
     RoutingModule,
     HttpClientModule,
+    NgHttpLoaderModule,
     SharedModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyDgIM7Hcp_ITaYxN3oUTUyJE-cnS-7cTeE'
